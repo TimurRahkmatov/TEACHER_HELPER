@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 const Private = () => {
   return (
-    <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+    <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
       <Sidebar />
       <Box>
         <Header />
