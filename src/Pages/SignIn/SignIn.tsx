@@ -1,13 +1,11 @@
+import {FacebookRounded, Google } from "@mui/icons-material";
 import {
   Box,
   Container,
-  FormControl,
-  FormLabel,
-  Input,
-  InputAdornment,
-  TextField,
   Typography,
 } from "@mui/material";
+import { AuthorizationButton } from "../../Components/Buttons/Authorization";
+import SignInForm from "../../Components/Forms/SignInForm";
 
 const SignIn = () => {
   return (
@@ -23,42 +21,27 @@ const SignIn = () => {
         >
           <Box
             sx={{
-              width: "360px",
+              width: "530px",
               backgroundColor: "#fff",
-              padding: "1rem 1rem",
+              padding: "1.5rem 1.5rem",
               boxShadow: "0px 0px 20px #9c989838",
+              borderRadius: "12px"
             }}
           >
-            <Typography variant="h5" sx={{ textAlign: "center" }}>
+            <Typography variant="h5" sx={{ textAlign: "center" , fontWeight: "500"  }}>
               Sign In
             </Typography>
             <Typography
-              variant="body2"
+              variant="body1"
               sx={{ textAlign: "center", color: "#31394D" }}
             >
               Let’s build something greate
             </Typography>
-            <FormControl sx={{ width: "100%" }}>
-              <FormLabel>E-mail or phone number</FormLabel>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="phoneNumber"
-                name="phoneNumber"
-                autoComplete="phoneNumber"
-                autoFocus
-                placeholder="Phone Number"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </FormControl>
+            <SignInForm />
+            <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between" , gap: "0.8rem"}}>
+            <AuthorizationButton><Google /> Sign In with Google</AuthorizationButton>
+            <AuthorizationButton><FacebookRounded sx={{color: "#2F93F6"}}/> Sign In with Facebook</AuthorizationButton>
+            </Box>
           </Box>
         </Box>
       </Container>
