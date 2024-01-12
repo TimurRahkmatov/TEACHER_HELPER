@@ -28,7 +28,7 @@ const SignIn = () => {
               borderRadius: "12px"
             }}
           >
-            <Typography variant="h5" sx={{ textAlign: "center" , fontWeight: "500"  }}>
+            <Typography variant="h5" sx={{ textAlign: "center" , fontWeight: "600"  }}>
               Sign In
             </Typography>
             <Typography

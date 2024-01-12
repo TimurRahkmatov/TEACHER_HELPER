@@ -1,3 +1,3 @@
 import Verification from "./Verification";
 
-export default Verification
+export default Verification;

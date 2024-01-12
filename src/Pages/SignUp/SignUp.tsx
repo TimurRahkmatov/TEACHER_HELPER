@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import { AuthorizationButton } from "../../Components/Buttons/Authorization";
-import { FacebookRounded, Google } from "@mui/icons-material";
+import { Apple, Google } from "@mui/icons-material";
 import SignUpForm from "../../Components/Forms/SignUpForm";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const SignUp = () => {
               borderRadius: '13px'
             }}
           >
-            <Typography sx={{ textAlign: "center" , fontWeight: "600" }} variant="h6">
+            <Typography sx={{ textAlign: "center" , fontWeight: "600" , fontSize: '1.5rem' }} variant="h6">
               Sign up for an account
             </Typography>
             <Typography
@@ -32,7 +32,7 @@ const SignUp = () => {
                 <Google /> Sign up with Google
               </AuthorizationButton>
               <AuthorizationButton>
-                <FacebookRounded /> Sign up with Apple
+                <Apple /> Sign up with Apple
               </AuthorizationButton>
             </Box>
           <Box
