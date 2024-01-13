@@ -8,6 +8,7 @@ import Resources from "./Pages/Resources";
 import Private from "./Layout/Private";
 import ResourcesScience from "./Pages/Resources/ResourcesScience";
 import ResourcesModerator from "./Pages/Resources/ResourcesModerator";
+import CreateResources from "./Pages/Resources/CreateResources";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/recources" element={<Resources />}/>
           <Route path="/recources/science/1" element={<ResourcesScience />}/>
           <Route path="/recources/science/class/1" element={<ResourcesModerator />}/>
+          <Route path="/create/resources" element={<CreateResources />}/>
         </Route>
       </Routes>
     </>
