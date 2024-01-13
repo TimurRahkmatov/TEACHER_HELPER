@@ -1,25 +1,33 @@
-import { ExpandMore, NotificationAddSharp, Search } from "@mui/icons-material";
-import { Box, Container, Input, Typography } from "@mui/material";
+import {
+  KeyboardArrowDown,
+  KeyboardReturnOutlined,
+  NotificationAddSharp,
+  Search,
+} from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Container,
+  Fade,
+  Input,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import AvatarkaImg from "../../assets/Images/avatarka.png";
-import { Dropdown, Space } from "antd";
-import { Link } from "react-router-dom";
-
-const items = [
-  {
-    key: "1",
-    label: <Link to="/">Options</Link>,
-  },
-  {
-    key: "2",
-    label: <Link to="/">Takliflar</Link>,
-  },
-  {
-    key: "3",
-    label: <Link to="/">Mentorga ariza</Link>,
-  },
-];
+import React from "react";
+// import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box
       component="header"
@@ -57,14 +65,31 @@ const Header = () => {
               <Typography variant="body1" sx={{ color: "#54657E" }}>
                 Danielle Campbell{" "}
               </Typography>
-              <Dropdown menu={{ items }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    <ExpandMore />
-                  </Space>
-                </a>
-              </Dropdown>
+              <Box
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <KeyboardArrowDown />
+              </Box>
             </Box>
+            <Menu
+              sx={{ width: "500px" }}
+              id="fade-menu"
+              MenuListProps={{
+                "aria-labelledby": "fade-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Fade}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
           </Box>
         </Container>
       </Box>
