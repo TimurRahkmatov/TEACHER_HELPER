@@ -1,23 +1,27 @@
 import styled from "styled-components"
 
 export const SidebarButtons = styled.button`
-    padding: 0.6rem 0;
+    padding: 0.8rem 1rem;
     width: 100%;
-    color: #fff;
+    color: #000;
     border: none;
-    background-color: #40BFC1;
-    font-size: 20px;
-    border-radius: 10px;
+    
+    background-color: #fff;
+    font-size: 18px;
+ border-radius: 8px;
     font-weight: 500;
+    font-family: "Roboto";
+    letter-spacing: 2px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-right: 4.3rem;
+    gap: 1rem;
 
     &:hover {
-        color: #40BFC1;
-        background-color: #fff;
+        color: #fff;
+        background-color: #40bfc1;
         transition: 0.4s;
+        /* border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px; */
     }
 `
 

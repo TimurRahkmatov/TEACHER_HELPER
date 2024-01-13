@@ -7,7 +7,7 @@ const Private = () => {
   return (
     <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
       <Sidebar />
-      <Box sx={{marginLeft: "23%" , width: "77%"}}>
+      <Box sx={{marginLeft: "18%" , width: "82%"}}>
         <Header />
         <Outlet />
       </Box>
