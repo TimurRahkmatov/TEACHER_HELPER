@@ -1,15 +1,14 @@
-import { ArrowBack } from "@mui/icons-material";
-import { Box, Container, Typography } from "@mui/material";
-import SciencesCard from "../../Components/Cards/Resources/SciencesCard";
-import ResourcesButtons from "../../Components/Buttons/Resources";
+import { ArrowBack } from "@mui/icons-material"
+import { Box, Container, Typography } from "@mui/material"
+import ResourcesButtons from "../../../Components/Buttons/Resources"
+import ModeratorCard from "../../../Components/Cards/Resources/ModeratorCard"
 
-
-const Resources = () => {
+const ResourcesModerator = () => {
   return (
-    <Box sx={{ padding: "2.5rem 0" }}>
+    <Box sx={{padding: '2.5rem 0'}}>
       <Container>
         <Box
-          sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}
+          sx={{ display: "flex", justifyContent: "end", alignItems: "center" , }}
         >
           <ResourcesButtons />
         </Box>
@@ -27,16 +26,16 @@ const Resources = () => {
             marginTop: "1rem",
           }}
         >
-          <ArrowBack />
-          <Typography variant="body1" sx={{ color: "4F4F4F" }}>
-            Bironta fan birlashmasini tanlang
+          <ArrowBack/>
+          <Typography variant="body1" sx={{ color: "4F4F4F" , fontSize: '18px' }}>
+            Moderatorni tanlang
           </Typography>
           <Typography>...</Typography>
         </Box>
-        <SciencesCard/>
+          <ModeratorCard />
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Resources;
+export default ResourcesModerator

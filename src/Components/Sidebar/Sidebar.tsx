@@ -10,7 +10,8 @@ const Sidebar = () => {
       sx={{
         width: "18%",
         backgroundColor: "#fff",
-        border: "1px solid #aeadad85",
+        // border: "1px solid #aeadad85",
+        boxShadow: "0px 0px 10px #aeadad4c",
         padding: "2.5rem 0",
         paddingRight: "0.5rem",
         height: "100vh",

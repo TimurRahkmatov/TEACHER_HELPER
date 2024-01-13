@@ -4,23 +4,34 @@ import { Link } from "react-router-dom";
 
 const fanlar = [
   {
-    title: "Точные науки",
-    desc: "6 предметов",
+    sinf: "5 класс",
+    moderator: "3 модератора",
+  },
+  
+  {
+    sinf: "6 класс",
+    moderator: "6 модератора",
   },
   {
-    title: "Гуманитарные науки",
-    desc: "6 предметов",
+    sinf: "8 класс",
+    moderator: "2 модератора",
   },
   {
-    title: "Естественные науки",
-    desc: "6 предметов",
+    sinf: "7 класс",
+    moderator: "3 модератора",
   },
   {
-    title: "Общие",
-    desc: "6 предметов",
+    sinf: "9 класс",
+    moderator: "3 модератора",
   },
+  {
+    sinf: "10 класс",
+    moderator: "3 модератора",
+  },
+
 ];
-const SciencesCard = () => {
+
+const ClassResources = () => {
   return (
     <Box
       sx={{
@@ -32,7 +43,7 @@ const SciencesCard = () => {
     >
       {fanlar?.map((item) => (
         <Link
-          to="/recources/science/1"
+          to="/recources/science/class/1"
           style={{ color: "black", textDecoration: "none" }}
         >
           <Box
@@ -49,10 +60,10 @@ const SciencesCard = () => {
           >
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "19px" }}>
-                {item?.title}
+                {item?.sinf}
               </Typography>
               <Typography sx={{ fontWeight: "600", color: "grey" }}>
-                {item?.desc}
+                {item?.moderator}
               </Typography>
             </Box>
             <ArrowRight />
@@ -63,4 +74,4 @@ const SciencesCard = () => {
   );
 };
 
-export default SciencesCard;
+export default ClassResources;
