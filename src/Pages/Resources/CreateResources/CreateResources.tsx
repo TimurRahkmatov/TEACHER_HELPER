@@ -1,4 +1,5 @@
 import { Box, Button, Container, Typography } from "@mui/material";
+import CreateResourcesForm from "../../../Components/Forms/CreateResources";
 
 const CreateResources = () => {
   return (
@@ -25,6 +26,7 @@ const CreateResources = () => {
           </Button>
         </Box>
         <Typography variant="h6" sx={{textAlign: 'center' , fontWeight: '600' , padding: '1rem 0'}}>Resurs yuklash </Typography>
+        <CreateResourcesForm />
       </Container>
     </Box>
   );
