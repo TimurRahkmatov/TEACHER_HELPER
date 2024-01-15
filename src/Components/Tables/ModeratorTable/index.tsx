@@ -15,7 +15,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
 
 const ModeratorTable = () => {
   function createData(
@@ -60,7 +59,7 @@ const ModeratorTable = () => {
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="center">1</TableCell>
+                <TableCell align="center">#1</TableCell>
                 <TableCell align="inherit" component="th" scope="row">
                   <Box>
                     <Typography sx={{fontSize: "18px" , fontWeight: "600"}} >
