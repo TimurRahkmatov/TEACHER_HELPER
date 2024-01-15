@@ -9,6 +9,7 @@ import Private from "./Layout/Private";
 import ResourcesScience from "./Pages/Resources/ResourcesScience";
 import ResourcesModerator from "./Pages/Resources/ResourcesModerator";
 import CreateResources from "./Pages/Resources/CreateResources";
+import ModeratorResources from "./Pages/Resources/ModeratorResources";
 
 function App() {
   return (
@@ -19,11 +20,15 @@ function App() {
         <Route path="verification" element={<Verification />} />
         <Route path="/" element={<Private />}>
           <Route path="/" element={<Calendar />} />
-          <Route path="/tematicplans" element={<TematicPlans />}/>
-          <Route path="/recources" element={<Resources />}/>
-          <Route path="/recources/science/1" element={<ResourcesScience />}/>
-          <Route path="/recources/science/class/1" element={<ResourcesModerator />}/>
-          <Route path="/create/resources" element={<CreateResources />}/>
+          <Route path="/tematicplans" element={<TematicPlans />} />
+          <Route path="/recources" element={<Resources />} />
+          <Route path="/recources/science/1" element={<ResourcesScience />} />
+          <Route
+            path="/recources/science/class/1"
+            element={<ResourcesModerator />}
+          />
+          <Route path="/create/resources" element={<CreateResources />} />
+          <Route path="/moderator/resources" element={<ModeratorResources />} />
         </Route>
       </Routes>
     </>
