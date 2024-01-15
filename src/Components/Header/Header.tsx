@@ -10,6 +10,7 @@ import Avatarka from "../../assets/Images/avatarka.png";
 import { Box, Container, Fade, Input, Menu, Typography } from "@mui/material";
 import AvatarkaImg from "../../assets/Images/avatarka.png";
 import React from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -51,7 +52,7 @@ const Header = () => {
                 }}
               />
             </Box>
-            <NotificationAddSharp />
+            <NotificationAddSharp sx={{color: '#40BFC1'}} />
             <Box sx={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
               <Box sx={{ width: "34px", height: "34px" }}>
                 <img src={AvatarkaImg} alt="avatarka" />
@@ -119,7 +120,7 @@ const Header = () => {
                   >
                     <Description sx={{ color: "#1C7F85" }} />
                     <Typography variant="body1">
-                      Moderator bo’lish uchun ariza berish{" "}
+                      <Link style={{color: "inherit" , textDecoration: "none"}} to='/application'>Moderator bo’lish uchun ariza berish</Link>
                     </Typography>
                   </Box>
                   <Box

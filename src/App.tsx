@@ -12,6 +12,7 @@ import CreateResources from "./Pages/Resources/CreateResources";
 import ModeratorResources from "./Pages/Resources/ModeratorResources";
 import ModeratorById from "./Pages/Resources/ModeratorById";
 import ScienceById from "./Pages/Resources/ScienceById/ScienceById";
+import Applications from "./Pages/Applications";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/recources/science/class/moderator/1" element={<ModeratorById />}/>
           <Route path="/create/resources" element={<CreateResources />} />
           <Route path="/moderator/resources" element={<ModeratorResources />} />
+          <Route path="/application" element={<Applications />} />
         </Route>
       </Routes>
     </>
