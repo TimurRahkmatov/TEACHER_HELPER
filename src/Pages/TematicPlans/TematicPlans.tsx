@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
+import TematicPlanTable from "../../Components/Tables/TematicPlan/TematicPlanTable";
 // import { Link } from "react-router-dom";
 
 // const table = [
@@ -75,7 +76,7 @@ const TematicPlans = () => {
           >
             Tematik plan haqida definition
           </Typography>
-          
+          <TematicPlanTable />
         </Box>
       </Container>
     </Box>

@@ -70,7 +70,7 @@ const Header = () => {
               </Box>
             </Box>
             <Menu
-              PaperProps={{ sx: { width: "300px" } }}
+              PaperProps={{ sx: { width: "250px" } }}
               id="fade-menu"
               MenuListProps={{
                 "aria-labelledby": "fade-button",
@@ -103,7 +103,6 @@ const Header = () => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    marginTop: "0.7rem",
                   }}
                 >
                   <Box
@@ -111,7 +110,7 @@ const Header = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      padding: '1rem',
+                      padding: '0.5rem 1rem',
                       "&:hover": {
                         backgroundColor: "#1c80852c",
                         transition: "0.3s",
@@ -128,7 +127,7 @@ const Header = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      padding: "1rem 1rem",
+                      padding: "0.6rem 1rem",
                       
                       "&:hover": {
                         backgroundColor: "#1c80852c",
@@ -144,7 +143,7 @@ const Header = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      padding: "1rem 1rem",
+                      padding: "0.6rem 1rem",
                       "&:hover": {
                         backgroundColor: "#1c80852c",
                         transition: "0.3s",
