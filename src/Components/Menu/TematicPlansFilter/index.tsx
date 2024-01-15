@@ -10,7 +10,7 @@ const options = [
 
 const TematicPlansMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+//   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
 
 //   const handleMenuItemClick = (
@@ -40,7 +40,7 @@ const TematicPlansMenu = () => {
           <MenuItem
             key={option}
             disabled={index === 0}
-            selected={index === selectedIndex}
+            // selected={index === selectedIndex}r
             // onClick={(event) => handleMenuItemClick(event, index)}
           >
             {option}

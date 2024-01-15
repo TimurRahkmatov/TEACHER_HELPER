@@ -1,4 +1,5 @@
 import { Box, Button, Container, Typography } from "@mui/material";
+import ModeratorTable from "../../../Components/Tables/ModeratorTable";
 
 const ModeratorById = () => {
   return (
@@ -26,7 +27,7 @@ const ModeratorById = () => {
               borderRadius: "28px",
               display: "flex",
               justifyContent: "center",
-              border: "1px solid grey",
+              border: "1px solid #40BFC1",
             }}
           >
             <Button
@@ -90,7 +91,9 @@ const ModeratorById = () => {
               4-chorak
             </Button>
           </Box>
+          
         </Box>
+        <ModeratorTable />
       </Container>
     </Box>
   );
