@@ -73,18 +73,6 @@ const Sidebar = () => {
             Resources
           </SidebarButtons>
         </Link>
-        <SidebarButtons>
-          <RestoreRounded />
-          Takliflar
-        </SidebarButtons>
-        <SidebarButtons>
-          <RestoreRounded />
-          Clients
-        </SidebarButtons>
-        <SidebarButtons>
-          <RestoreRounded />
-          Teachers
-        </SidebarButtons>
       </Box>
     </Box>
   );

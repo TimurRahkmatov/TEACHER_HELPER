@@ -70,7 +70,7 @@ const Header = () => {
               </Box>
             </Box>
             <Menu
-              PaperProps={{ sx: { width: "250px" } }}
+              PaperProps={{ sx: { width: "255px" , marginTop: "-4rem"  } }}
               id="fade-menu"
               MenuListProps={{
                 "aria-labelledby": "fade-button",
