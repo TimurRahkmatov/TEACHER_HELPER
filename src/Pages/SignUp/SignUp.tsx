@@ -11,7 +11,7 @@ const SignUp = () => {
         <Box sx={{ width: "100%" , display: 'flex' , alignItems: 'center' , justifyContent: 'center' , height: '100vh' , }}>
           <Box
             sx={{
-              width: "500px",
+              width: {md: "500px" , lg: "520px" , sm: "490px" , xl: "430px"},
               padding: "1.5rem",
               backgroundColor: "#fff",
               boxShadow: "0px 0px 20px #9c989838",
@@ -27,7 +27,7 @@ const SignUp = () => {
             >
               Your social campaigns
             </Typography> 
-            <Box sx={{ display: "flex", justifyContent: "space-between" , padding: '0.5rem 0' , gap: '0.5rem' }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" , padding: '0.5rem 0' , gap: '0.5rem', flexWrap: "wrap" }}>
               <AuthorizationButton>
                 <Google /> Sign up with Google
               </AuthorizationButton>
@@ -37,7 +37,7 @@ const SignUp = () => {
             </Box>
           <Box
             sx={{
-              display: "flex",
+              display: {md: "flex" , lg: "flex" , sm: "flex" , xs: "none"},
               justifyContent: "space-between",
               alignItems: "center",
               gap: "0.4rem",
