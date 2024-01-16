@@ -21,6 +21,7 @@ const Sidebar = ({setOpen}:any) => {
         paddingRight: "0.5rem",
         height: "100vh",
         position: "fixed",
+        zIndex: 999
       }}
     >
       <Box

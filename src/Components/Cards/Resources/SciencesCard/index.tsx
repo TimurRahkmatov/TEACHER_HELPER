@@ -26,6 +26,7 @@ const SciencesCard = () => {
       sx={{
         display: "flex",
         flexWrap: "wrap",
+        justifyContent: {lg: "start" , md: "start" , sm: 'center' , xs: 'center'},
         gap: "2rem",
       }}
     >

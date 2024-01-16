@@ -16,6 +16,7 @@ const TematicPlanFilter = () => {
           borderRadius: "10px",
           padding: "1rem 1rem",
           display: "flex",
+          flexWrap: "wrap",
           justifyContent: "space-between",
           gap: "2rem",
           
