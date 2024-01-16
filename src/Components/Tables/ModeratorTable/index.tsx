@@ -15,6 +15,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ModeratorTable = () => {
   function createData(
@@ -62,13 +63,17 @@ const ModeratorTable = () => {
                 <TableCell align="center">#1</TableCell>
                 <TableCell align="inherit" component="th" scope="row">
                   <Box>
-                    <Typography sx={{fontSize: "18px" , fontWeight: "600"}} >
+                    <Typography sx={{ fontSize: "18px", fontWeight: "600" }}>
                       {" "}
-                      Старший учитель математики учитель математики Старший
-                      учитель математики
+                      <Link style={{color: "inherit" , textDecoration: "none"}} to='/recources/science/class/moderator/science/1'>
+                        Старший учитель математики учитель математики Старший
+                        учитель математикиds
+                      </Link>
                     </Typography>
                   </Box>
-                    <Typography sx={{textAlign: "start"}}>Algebra 1*sinf</Typography>
+                  <Typography sx={{ textAlign: "start" }}>
+                    Algebra 1*sinf
+                  </Typography>
                 </TableCell>
                 <TableCell align="center">
                   <Box>

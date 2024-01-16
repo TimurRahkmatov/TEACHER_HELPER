@@ -1,16 +1,16 @@
 import { Box } from "@mui/material";
 
 const buttons = [
-    {
-      title: "bepul",
-    },
-    {
-      title: "Sotib oling",
-    },
-    {
-      title: "All",
-    },
-  ];
+  {
+    title: "bepul",
+  },
+  {
+    title: "Sotib oling",
+  },
+  {
+    title: "All",
+  },
+];
 
 const ResourcesButtons = () => {
   return (
