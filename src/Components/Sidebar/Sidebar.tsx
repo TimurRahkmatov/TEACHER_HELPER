@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        width: "18%",
+        width: {md: "18%"},
         backgroundColor: "#fff",
         // border: "1px solid #aeadad85",
         boxShadow: "0px 0px 10px #aeadad4c",

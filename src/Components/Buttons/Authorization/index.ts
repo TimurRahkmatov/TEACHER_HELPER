@@ -12,4 +12,13 @@ export const AuthorizationButton = styled.button`
     border-radius: 6px;
     background-color: #fff;
 
+
+
+    @media (max-width: 920px) {
+        width: 190px;
+    }
+    @media (max-width: 630px) {
+        width: 100%;
+    }
+
 `

@@ -21,7 +21,7 @@ const SignIn = () => {
         >
           <Box
             sx={{
-              width: "530px",
+              width: {lg: "530px" , md: "530px" , sm: "470px" , xs: "380px"},
               backgroundColor: "#fff",
               padding: "1.5rem 1.5rem",
               boxShadow: "0px 0px 20px #9c989838",
@@ -38,7 +38,7 @@ const SignIn = () => {
               Let’s build something greate
             </Typography>
             <SignInForm />
-            <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between" , gap: "0.8rem"}}>
+            <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between" , gap: "0.8rem" , flexWrap: "wrap"}}>
             <AuthorizationButton><Google /> Sign In with Google</AuthorizationButton>
             <AuthorizationButton><FacebookRounded sx={{color: "#2F93F6"}}/> Sign In with Facebook</AuthorizationButton>
             </Box>
