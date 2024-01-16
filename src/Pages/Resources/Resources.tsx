@@ -9,11 +9,11 @@ const Resources = () => {
     <Box sx={{ padding: "2.5rem 0" }}>
       <Container>
         <Box
-          sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}
+          sx={{ display: "flex", justifyContent: "end", alignItems: "center" , margin: "5rem 0" }}
         >
           <ResourcesButtons />
         </Box>
-        <Typography variant="h5" sx={{ fontWeight: "600" }}>
+        <Typography variant="h5" sx={{ fontWeight: "600" , marginTop: {lg: 0 , md: '0' , sm: '1rem' , xs: "1.5rem"} }}>
           Resurslar
         </Typography>
         <Typography variant="body1" sx={{ fontWeight: "600" }}>

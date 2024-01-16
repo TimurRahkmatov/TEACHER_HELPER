@@ -4,15 +4,20 @@ import { SidebarButtons } from "../Buttons/SidebarButton";
 import { DateRange, PlayLesson, RestoreRounded } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({setOpen}:any) => {
+  const open:any = false
   return (
     <Box
+    component="div"
+    className={open === true ? ("sidebar_res") : ("sidebar")}
       sx={{
-        width: {md: "18%"},
+        minWidth: {md: "18%"},
         backgroundColor: "#fff",
-        // border: "1px solid #aeadad85",
         boxShadow: "0px 0px 10px #aeadad4c",
         padding: "2.5rem 0",
+        top: 0,
+        bottom: 0,
+        left: 0,
         paddingRight: "0.5rem",
         height: "100vh",
         position: "fixed",

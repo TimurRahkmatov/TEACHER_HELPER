@@ -27,7 +27,7 @@ const SignUp = () => {
             >
               Your social campaigns
             </Typography> 
-            <Box sx={{ display: "flex", justifyContent: "space-between" , padding: '0.5rem 0' , gap: '0.5rem', flexWrap: "wrap" }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" , padding: '0.5rem 0' , gap: '0.5rem', flexDirection: {md: "inherit" , sm: "inherit" , xs: "column"} }}>
               <AuthorizationButton>
                 <Google /> Sign up with Google
               </AuthorizationButton>
@@ -35,24 +35,6 @@ const SignUp = () => {
                 <Apple /> Sign up with Apple
               </AuthorizationButton>
             </Box>
-          <Box
-            sx={{
-              display: {md: "flex" , lg: "flex" , sm: "flex" , xs: "none"},
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "0.4rem",
-              marginTop: '0.4rem'
-              
-            }}
-          >
-            <Box
-              sx={{ width: "37%", height: "1px", backgroundColor: "#EFF2F5" }}
-            ></Box>
-            <Typography sx={{fontSize: '15px' , color: "#A1A5B7"}} variant="body2">Or with email</Typography>
-            <Box
-              sx={{ width: "37%", height: "1px", backgroundColor: "#EFF2F5" }}
-            ></Box>
-          </Box>
           <SignUpForm />
           <Typography variant="body1" sx={{display: "flex" , alignItems: 'center' , justifyContent: 'center' , gap: '0.5rem'}}>
           Already have an Account? <Link className="SignInlink" to='/signin'>Sign In</Link>

@@ -2,19 +2,31 @@ import {
   Chat,
   Description,
   KeyboardArrowDown,
+  MenuOpen,
   NotificationAddSharp,
   Search,
   Settings,
 } from "@mui/icons-material";
 import Avatarka from "../../assets/Images/avatarka.png";
-import { Box, Container, Fade, Input, Menu, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Fade,
+  Input,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import AvatarkaImg from "../../assets/Images/avatarka.png";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Sidebar from "../Sidebar";
 // import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ openSidebar, setOpen }: any) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -29,7 +41,24 @@ const Header = () => {
       sx={{ padding: "1rem 0", boxShadow: "0px 0px 20px #54515135" }}
     >
       <Box component="nav">
-        <Container>
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            sx={{
+              display: { lg: "none", md: "block", sm: "block", xs: "block" },
+            }}
+            component="div"
+            onClick={() => openSidebar(true)}
+          >
+            <MenuOpen />
+          </Box>
+          <Box></Box>
+
           <Box
             sx={{
               display: "flex",
@@ -38,9 +67,22 @@ const Header = () => {
               justifyContent: "end",
             }}
           >
-            <Box sx={{ position: "relative", width: "400px" }}>
+            <Box
+              sx={{
+                position: "relative",
+                width: { lg: "400px", md: "400px", sm: "350px", xs: "130px" },
+              }}
+            >
               <Input
-                sx={{ width: "400px", padding: "0.2rem 0" }}
+                sx={{
+                  width: {
+                    lg: "400px",
+                    md: "400px",
+                    sm: "350px",
+                    xs: "130px",
+                    padding: "0.2rem 0",
+                  },
+                }}
                 placeholder="Search"
               />
               <Search
@@ -52,15 +94,32 @@ const Header = () => {
                 }}
               />
             </Box>
-            <NotificationAddSharp sx={{color: '#40BFC1'}} />
+            <NotificationAddSharp sx={{ color: "#40BFC1" }} />
             <Box sx={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
               <Box sx={{ width: "34px", height: "34px" }}>
-                <img src={AvatarkaImg} alt="avatarka" />
+                <img
+                  id="fade-button"
+                  aria-controls={open ? "fade-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                  src={AvatarkaImg}
+                  alt="avatarka"
+                />
               </Box>
-              <Typography variant="body1" sx={{ color: "#54657E" }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#54657E",
+                  display: { lg: "none", md: "none", sm: "none", xs: "none" },
+                }}
+              >
                 Danielle Campbell{" "}
               </Typography>
               <Box
+                sx={{
+                  display: { lg: "block", md: "block", sm: "none", xs: "none" },
+                }}
                 id="fade-button"
                 aria-controls={open ? "fade-menu" : undefined}
                 aria-haspopup="true"
@@ -71,7 +130,7 @@ const Header = () => {
               </Box>
             </Box>
             <Menu
-              PaperProps={{ sx: { width: "255px" , marginTop: "-4rem"  } }}
+              PaperProps={{ sx: { width: "255px", marginTop: "-4rem" } }}
               id="fade-menu"
               MenuListProps={{
                 "aria-labelledby": "fade-button",
@@ -81,25 +140,26 @@ const Header = () => {
               onClose={handleClose}
               TransitionComponent={Fade}
             >
-              <Box >
-                <Box sx={{padding: '1rem'}}><Box sx={{ width: "100px", height: "100px" }}>
-                  <img
-                    style={{ width: "70px", height: "70px" }}
-                    src={Avatarka}
-                    alt="avatarka"
-                  />
+              <Box>
+                <Box sx={{ padding: "1rem" }}>
+                  <Box sx={{ width: "100px", height: "100px" }}>
+                    <img
+                      style={{ width: "70px", height: "70px" }}
+                      src={Avatarka}
+                      alt="avatarka"
+                    />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontSize: "17px",
+                      fontWeight: "600",
+                      marginTop: "-0.9rem",
+                    }}
+                  >
+                    Юлия Владимировна
+                  </Typography>
+                  <Typography variant="body1">Учитель математики</Typography>
                 </Box>
-                <Typography
-                  sx={{
-                   
-                    fontSize: "17px",
-                    fontWeight: "600",
-                    marginTop: "-0.9rem",
-                  }}
-                >
-                  Юлия Владимировна
-                </Typography>
-                <Typography variant="body1">Учитель математики</Typography></Box>
                 <Box
                   sx={{
                     display: "flex",
@@ -111,7 +171,7 @@ const Header = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      padding: '0.5rem 1rem',
+                      padding: "0.5rem 1rem",
                       "&:hover": {
                         backgroundColor: "#1c80852c",
                         transition: "0.3s",
@@ -120,7 +180,12 @@ const Header = () => {
                   >
                     <Description sx={{ color: "#1C7F85" }} />
                     <Typography variant="body1">
-                      <Link style={{color: "inherit" , textDecoration: "none"}} to='/application'>Moderator bo’lish uchun ariza berish</Link>
+                      <Link
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        to="/application"
+                      >
+                        Moderator bo’lish uchun ariza berish
+                      </Link>
                     </Typography>
                   </Box>
                   <Box
@@ -129,7 +194,7 @@ const Header = () => {
                       alignItems: "center",
                       gap: "0.5rem",
                       padding: "0.6rem 1rem",
-                      
+
                       "&:hover": {
                         backgroundColor: "#1c80852c",
                         transition: "0.3s",

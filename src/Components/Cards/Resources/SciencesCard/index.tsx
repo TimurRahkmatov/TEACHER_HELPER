@@ -25,9 +25,8 @@ const SciencesCard = () => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "space-between",
         flexWrap: "wrap",
-        gap: "1rem",
+        gap: "2rem",
       }}
     >
       {fanlar?.map((item) => (
