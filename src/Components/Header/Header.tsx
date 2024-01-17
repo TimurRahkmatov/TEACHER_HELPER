@@ -13,7 +13,7 @@ import AvatarkaImg from "../../assets/Images/avatarka.png";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = ({ openSidebar, setOpenSidebar }: any) => {
+const Header = ({ setOpenSidebar }: any) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);

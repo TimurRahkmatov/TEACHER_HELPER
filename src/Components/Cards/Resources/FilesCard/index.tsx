@@ -86,7 +86,7 @@ const FilesCard = () => {
         </Typography>
       </Box>
       <Box sx={{ padding: "1.5rem 0" , display: "flex" , flexWrap: 'wrap' , columnGap: '14rem' , rowGap: '2rem'}}>
-        {[0, 1, 2].map((item) => (
+        {[0, 1, 2].map((item:any) => (
           <Box sx={{ display: "flex", gap: "0.7rem", alignItems: "center" }}>
             <Box
               sx={{
@@ -104,7 +104,7 @@ const FilesCard = () => {
             </Box>
             <Box>
               <Typography sx={{ fontSize: "18px", fontWeight: "600" }}>
-                тема 1
+                тема 1 {item}
               </Typography>
               <Typography sx={{ color: "grey" }}>256 КБ</Typography>
             </Box>

@@ -1,7 +1,6 @@
 import { Box, Container, Typography } from "@mui/material"
 import ScienceTable from "../../../Components/Tables/ScienceTable"
 import FilesCard from "../../../Components/Cards/Resources/FilesCard"
-import Resources from './../index';
 
 const ScienceById = () => {
   return (

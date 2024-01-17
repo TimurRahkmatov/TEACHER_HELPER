@@ -12,7 +12,7 @@ const Private = () => {
     <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
       <Sidebar setOpenSidebar={setOpenSidebar} open={openSidebar}  />
       <Box sx={{marginLeft: {lg: "18%" , md: "0" , sm: "0px" , xs: "0px"} , width: {lg: "82%" , md: "100%" , sm : "100%" , xs:"100%"}}}>
-        <Header openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
+        <Header  setOpenSidebar={setOpenSidebar} />
         <Outlet />
       </Box>
     </Box>
