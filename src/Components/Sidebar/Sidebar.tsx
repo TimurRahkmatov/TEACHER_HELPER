@@ -32,7 +32,7 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
     <Box
       component="div"
       ref={sideNavRef}
-      className={open === true ? "sidebar_res" : "sidebar"}
+      className={open === true ? "sidebar_res" : " sidebar "}
       sx={{
         minWidth: { md: "18%" },
         backgroundColor: "#fff",
@@ -58,7 +58,10 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
           right: "0",
           borderRadius: "8px",
           border: "1px solid #40BFC1",
-          color: "#40BFC1"
+          color: "#40BFC1",
+          display: {lg: "none" , md: "flex" , sm: "flex" , xs: "flex"},
+          justifyContent: "center",
+          alignItems: 'center'
         }}
       >
         <Close />
@@ -77,7 +80,7 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
           src={LogoImg}
           alt="logo"
         />
-        <Typography variant="h6" sx={{ color: "#40BFC1", fontWeight: 600 }}>
+        <Typography variant="h6" sx={{ color: "#40BFC1", fontWeight: 600 , width: {lg: "100%" , md: "60%" , sm: "60%" , xs:"60%"}}}>
           Teacher Helper
         </Typography>
       </Box>
@@ -85,7 +88,7 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
         sx={{
           fontSize: "17px",
           fontWeight: 600,
-          marginTop: "4rem",
+          marginTop: {lg: "4rem" , md: "3rem" , sm: "2.5rem" , xs: "2rem"},
           padding: "0.7rem 1.3rem",
         }}
       >

@@ -43,6 +43,7 @@ const Header = ({ setOpenSidebar }: any) => {
               display: { lg: "none", md: "block", sm: "block", xs: "block" },
               padding: "0.2rem 0.4rem",
               borderRadius: "8px",
+              
               "&:hover": {
                 border: "2px solid #40BFC1",
                 backgroundColor: "#40bfc175",
