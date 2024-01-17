@@ -12,7 +12,7 @@ const ResourcesScience = () => {
         >
           <ResourcesButtons />
         </Box>
-        <Typography variant="h5" sx={{ fontWeight: "600" }}>
+        <Typography variant="h5" sx={{ fontWeight: "600" , marginTop: {lg: '0' , md: "0" , sm: "2rem" , xs: '2rem'} }}>
           Resurslar
         </Typography>
         <Typography variant="body1" sx={{ fontWeight: "600" }}>

@@ -18,11 +18,11 @@ const ModeratorById = () => {
           Tematik plan haqida definition
         </Typography>
         <Box
-          sx={{ display: "flex", justifyContent: "end", marginTop: "0.5rem" }}
+          sx={{ display: "flex", justifyContent: {lg:  "end" , md: "end" , sm: "center" , xs: "center"}, marginTop: {lg: "0.5rem" , md: "0.5rem" , sm: '1rem' , xs: '1rem'} }}
         >
           <Box
             sx={{
-              width: "373px",
+              width: {lg: "373px" , md: "373px" , sm: "373px" , xs: "95%"},
               backgroundColor: "#fff",
               borderRadius: "28px",
               display: "flex",

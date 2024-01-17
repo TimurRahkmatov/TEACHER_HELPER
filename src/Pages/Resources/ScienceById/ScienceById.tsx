@@ -8,7 +8,7 @@ const ScienceById = () => {
         <Container> 
             <Typography variant="h5" sx={{fontWeight: "600"}}>Resources</Typography>
             <Typography variant="body1" sx={{fontWeight: '600'}}>resurslarni yuklab oling</Typography>
-            <Typography variant="h5" sx={{fontWeight: '600' , textAlign: 'center' , marginTop :'1rem'}}>Mavzu bo’yicha resurslar</Typography>
+            <Typography variant="h6" sx={{fontWeight: '600' , textAlign: 'center' , marginTop :'1rem'}}>Mavzu bo’yicha resurslar</Typography>
             <ScienceTable />
             <FilesCard />
         </Container>

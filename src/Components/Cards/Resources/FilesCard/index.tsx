@@ -85,9 +85,9 @@ const FilesCard = () => {
           Видео
         </Typography>
       </Box>
-      <Box sx={{ padding: "1.5rem 0" , display: "flex" , flexWrap: 'wrap' , columnGap: '14rem' , rowGap: '2rem'}}>
-        {[0, 1, 2].map((item:any) => (
-          <Box sx={{ display: "flex", gap: "0.7rem", alignItems: "center" }}>
+      <Box sx={{ padding: "1.5rem 0" , display: "flex" , flexWrap: 'wrap' ,  justifyContent: "space-between" , gap: "1rem"}}>
+        {[0, 1, 2,3].map((item:any) => (
+          <Box sx={{ display: "flex", gap: "0.7rem", alignItems: "center" , width: {lg: "250px" , md: "250px" , sm: "250px" , xs:"170px"}}}>
             <Box
               sx={{
                 width: "50px",
