@@ -53,8 +53,10 @@ const ModeratorCard = () => {
               padding: "1rem",
               borderRadius: "10px",
               display: "flex",
+
               alignItems: "center",
               gap: "1rem",
+              flexDirection: {lg: "inherit" , md: 'inherit' , sm: "column" , xs: "column"}
             }}
           >
             <Box>
@@ -65,6 +67,7 @@ const ModeratorCard = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
+                  gap: "1rem",
                   justifyContent: "space-between",
                 }}
               >
@@ -101,8 +104,9 @@ const ModeratorCard = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "14rem",
+                  justifyContent: "space-between",
                   marginTop: "1rem",
+                  // flexDirection: {lg: "inherit" , md: 'inherit' , sm: "column" , xs: "column"}
                 }}
               >
                 <Box>

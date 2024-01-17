@@ -1,17 +1,40 @@
 import { Box, Typography } from "@mui/material";
 import LogoImg from "../../assets/Images/logo.png";
 import { SidebarButtons } from "../Buttons/SidebarButton";
-import { DateRange, PlayLesson, RestoreRounded } from "@mui/icons-material";
+import {
+  Close,
+  DateRange,
+  PlayLesson,
+  RestoreRounded,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
-const Sidebar = ({setOpen}:any) => {
-  const open:any = false
+const Sidebar = ({ open, setOpenSidebar }: any) => {
+  const sideNavRef:any = useRef(null);
+  useEffect(() => {
+    // Add event listener to the document object
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  function handleClickOutside(event:Event):void {
+    if (sideNavRef.current && !sideNavRef.current?.contains(event.target) ) {
+      setOpenSidebar(false);
+    }
+  }
+
   return (
     <Box
-    component="div"
-    className={open === true ? ("sidebar_res") : ("sidebar")}
+      component="div"
+      ref={sideNavRef}
+      className={open === true ? "sidebar_res" : "sidebar"}
       sx={{
-        minWidth: {md: "18%"},
+        minWidth: { md: "18%" },
         backgroundColor: "#fff",
         boxShadow: "0px 0px 10px #aeadad4c",
         padding: "2.5rem 0",
@@ -21,14 +44,31 @@ const Sidebar = ({setOpen}:any) => {
         paddingRight: "0.5rem",
         height: "100vh",
         position: "fixed",
-        zIndex: 999
+        zIndex: 999,
       }}
     >
+      <Box
+        component="div"
+        onClick={() => setOpenSidebar(false)}
+        sx={{
+          padding: "0.3rem 0.5rem",
+          margin: "0.5rem",
+          position: "absolute",
+          top: "0",
+          right: "0",
+          borderRadius: "8px",
+          border: "1px solid #40BFC1",
+          color: "#40BFC1"
+        }}
+      >
+        <Close />
+      </Box>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           gap: "0.5rem",
+          maxWidth: "100%",
           paddingLeft: "1rem",
         }}
       >

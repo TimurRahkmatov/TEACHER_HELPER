@@ -8,19 +8,12 @@ import {
   Settings,
 } from "@mui/icons-material";
 import Avatarka from "../../assets/Images/avatarka.png";
-import {
-  Box,
-  Container,
-  Fade,
-  Input,
-  Menu,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Fade, Input, Menu, Typography } from "@mui/material";
 import AvatarkaImg from "../../assets/Images/avatarka.png";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ openSidebar, setOpenSidebar }: any) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -45,16 +38,16 @@ const Header = () => {
           }}
         >
           <Box
+            onClick={() => setOpenSidebar(true)}
             sx={{
               display: { lg: "none", md: "block", sm: "block", xs: "block" },
-              padding : "0.2rem 0.4rem",
+              padding: "0.2rem 0.4rem",
               borderRadius: "8px",
               "&:hover": {
                 border: "2px solid #40BFC1",
                 backgroundColor: "#40bfc175",
-                transition: "0.3s"
-              }
-              
+                transition: "0.3s",
+              },
             }}
             component="div"
             // onClick={() => openSidebar(true)}
@@ -134,7 +127,12 @@ const Header = () => {
               </Box>
             </Box>
             <Menu
-              PaperProps={{ sx: { width: {lg: "255px" , md: "240px" , sm: "200px" , xs: "190px"}, marginTop: "-4rem" } }}
+              PaperProps={{
+                sx: {
+                  width: { lg: "255px", md: "240px", sm: "200px", xs: "190px" },
+                  marginTop: "-4rem",
+                },
+              }}
               id="fade-menu"
               MenuListProps={{
                 "aria-labelledby": "fade-button",

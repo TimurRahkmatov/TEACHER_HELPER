@@ -38,11 +38,7 @@ section {
   transition: 1s;
 }
 
-.sidebar {
-  transform: translate(-100%);
-  transition: 1s;
 
-}
 
 .sidebar_link {
   width: 100%;
@@ -52,5 +48,10 @@ section {
 @media (max-width: 1200px) {
   .sidebar {
     display: none;
+  }
+
+  .sidebar {
+    transform: translate(-100%);
+    transition: 1s;
   }
 }
