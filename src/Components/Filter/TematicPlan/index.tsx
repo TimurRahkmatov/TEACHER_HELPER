@@ -1,95 +1,81 @@
 import {
-  BookOutlined,
+  Bookmark,
   KeyboardArrowDown,
-  LocationOnOutlined,
 } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Menu, MenuItem } from "@mui/material";
+import { Typography } from "antd";
+import React from "react";
+import ClassFilterMenu from "../../Menu/TematicPlansFilter/FilterClassMenu";
+import QuarterFilterMenu from "../../Menu/TematicPlansFilter/FilterQuarterMenu";
 
 const TematicPlanFilter = () => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl)
+  
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <Box sx={{ marginTop: "1.5rem" }}>
-      <Box
-        sx={{
-          width: "100%",
-          backgroundColor: "#fff",
-          borderRadius: "10px",
-          padding: "1rem 1rem",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          gap: "2rem",
-          
-        }}
-      >
-        <Box
+    <Box
+      sx={{
+        marginTop: "1.5rem",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "1rem",
+        flexWrap: "wrap"
+      }}
+    >
+      <Box>
+        <Button
           sx={{
-            width: "25%",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems : "center"
-
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-            <BookOutlined />
-            <Typography>Subject</Typography>
-          </Box>
-          <KeyboardArrowDown
-            
-          />
-        </Box>
-        <Box
-          sx={{
-            width: "30%",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems : "center"
-            
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-            <LocationOnOutlined />
-            <Typography>Class</Typography>
-          </Box>
-          <KeyboardArrowDown />
-        </Box>
-        <Box
-          sx={{
-            width: "30%",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems : "center"
-
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-            <LocationOnOutlined />
-            <Typography>Quarter</Typography>
-          </Box>
-          <KeyboardArrowDown />
-        </Box>
-
-        <Box
-          sx={{
-            width: "15%",
+            textTransform: "capitalize",
+            border: "1px solid grey",
+            padding: "0.5rem 0.5rem",
+            width: "180px",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
+          }}
+          id="demo_subject_button"
+          aria-controls={open ? "demo-subject-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <Box sx={{ display: "flex", gap: "0.3rem" }}>
+            <Bookmark />
+            <Typography>Subject</Typography>
+          </Box>
+          <KeyboardArrowDown />
+        </Button>
+        <Menu
+          id="demo-subject-menu"
+          aria-labelledby="demo_subject_button"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
           }}
         >
-          <Button
-            sx={{
-              padding: "0.2rem 2rem",
-              backgroundColor: "#40BFC1",
-              textTransform: "capitalize",
-              color: "#fff",
-            }}
-          >
-            Search
-          </Button>
-        </Box>
+          <MenuItem onClick={handleClose}>Birinchi jahon urushi</MenuItem>
+          <MenuItem onClick={handleClose}>Iratsional tenglamalar</MenuItem>
+          <MenuItem onClick={handleClose}>lagarifm</MenuItem>
+        </Menu>
       </Box>
+      <ClassFilterMenu />
+      <QuarterFilterMenu />
     </Box>
   );
 };
