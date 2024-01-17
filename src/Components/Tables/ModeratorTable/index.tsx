@@ -85,11 +85,7 @@ const ModeratorTable = () => {
                 </TableCell>
                 <TableCell align="center">3</TableCell>
                 <TableCell
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
+                  
                   align="center"
                 >
                   <Box
