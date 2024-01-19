@@ -16,13 +16,20 @@ interface IResed {
   username: string;
 }
 
-// interface ILogin {
-
-// }
+interface ILogin {
+    username: string
+    password: string
+}
 
 interface IPasswordChange {
     password: string,
 }
+
+const token = localStorage.getItem("token")
+if (token) {
+    axios.defaults.headers.common = { Authorization: `bearer ${token}` };
+  }
+
 
 export const auth_api = {
   register: (body: IRegister) => axios.post(BASE_URL + "/auth/register", body),
@@ -31,6 +38,6 @@ export const auth_api = {
   resed: (body: IResed) => axios.post(BASE_URL + "/auth/resend" , body),
   passwordChange: (body: IPasswordChange , token:String) => axios.post(BASE_URL + "/auth/password/change" , body , {headers: {
     "Authorization": "Bearer" +  " "  + token
-  }})
-//   login: (body: ) => axios.post(BASE_URL + '/auth/login' , body)
+  }}),
+  login: (body: ILogin ) => axios.post(BASE_URL + '/auth/login' , body)
 };

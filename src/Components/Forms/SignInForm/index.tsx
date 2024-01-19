@@ -9,25 +9,44 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { auth_api } from "../../../Api/auth.api";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "../../../store";
+import { registerAuth } from "../../../store/slices/auth";
 
 const SignInForm = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const [username, setUsername] = useState("");
+  const [password, setPassowrd] = useState("");
 
-  // const handleLogin = () => {
-  //   try {
-  //     const {data} = await 
-  //   } catch (error) {
-  //     console.log(error);
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    try {
+      const { data } = await auth_api.login({
+        username: username,
+        password: password,
+      });
+      console.log(data);
       
-  //   }
-  // };
+      if(data?.code === 200) {
+        localStorage.setItem("token" , data?.data.token)
+        toast(data?.message , {type: "success"})
+        dispatch(registerAuth({username: username}))
+        navigate("/")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Box>
       <FormControl
         component="form"
-        // onSubmit={handleLogin}
+        onSubmit={handleLogin}
         sx={{ width: "100%", padding: "0.5rem 0", marginTop: "0.5rem" }}
       >
         <FormLabel
@@ -41,6 +60,8 @@ const SignInForm = () => {
           E-mail or phone number
         </FormLabel>
         <TextField
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
           variant="outlined"
           sx={{ padding: "0.7rem 0" }}
           required
@@ -70,6 +91,8 @@ const SignInForm = () => {
           Password
         </FormLabel>
         <TextField
+          onChange={(e) => setPassowrd(e.target.value)}
+          value={password}
           variant="outlined"
           sx={{ padding: "0.7rem 0" }}
           required
