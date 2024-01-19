@@ -13,9 +13,12 @@ import { useEffect, useState } from "react";
 import { base_api } from "../../../Api/base.api";
 import { auth_api } from "../../../Api/auth.api";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../store";
+import { registerAuth } from "../../../store/slices/auth";
 
 
 const SignUpForm = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const [Sciences, setSciences] = useState([]);
   const [username, setUsername] = useState("");
@@ -26,12 +29,12 @@ const SignUpForm = () => {
     try {
       const {data} = await auth_api.register({username: username , science_id: +science})
       if(data.code === 200) {
-        localStorage.setItem("username" , username)
+        dispatch(registerAuth({username: username}))
         navigate('/verification')
       }
     } catch (error: any) {
       if(error.response.data.code === 1111) {
-        localStorage.setItem("username" , username)
+        dispatch(registerAuth({username: username}))
 
         navigate('/verification')
       }
