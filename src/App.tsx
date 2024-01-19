@@ -13,6 +13,7 @@ import ModeratorResources from "./Pages/Resources/ModeratorResources";
 import ModeratorById from "./Pages/Resources/ModeratorById";
 import ScienceById from "./Pages/Resources/ScienceById/ScienceById";
 import Applications from "./Pages/Applications";
+import PasswordChange from "./Pages/PasswordChange";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verification" element={<Verification />} />
+        <Route path="/passwordchange" element={<PasswordChange />} />
         <Route path="/" element={<Private />}>
           <Route path="/" element={<Calendar />} />
           <Route path="/tematicplans" element={<TematicPlans />} />

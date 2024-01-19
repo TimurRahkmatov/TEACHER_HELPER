@@ -1,21 +1,33 @@
 import { AccountCircle } from "@mui/icons-material";
 
-import { Box, Button, FormControl, FormLabel, InputAdornment, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
+// import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate();
 
-  const handleLogin = () => {
-    localStorage.setItem("token" , "token"),
-    navigate('/')
-  }
+  // const handleLogin = () => {
+  //   try {
+  //     const {data} = await 
+  //   } catch (error) {
+  //     console.log(error);
+      
+  //   }
+  // };
 
   return (
     <Box>
       <FormControl
-      component='form'
-      onSubmit={handleLogin}
+        component="form"
+        // onSubmit={handleLogin}
         sx={{ width: "100%", padding: "0.5rem 0", marginTop: "0.5rem" }}
       >
         <FormLabel
@@ -76,7 +88,7 @@ const SignInForm = () => {
           }}
         />
         <Button
-        type="submit"
+          type="submit"
           sx={{
             padding: "0.7rem 0",
             textAlign: "center",
@@ -86,20 +98,25 @@ const SignInForm = () => {
             textTransform: "none",
             marginTop: "1rem",
             "&:hover": {
-              backgroundColor: '#fff',
-              color: '#2F93F6',
-              border: '1px solid #2F93F6'
-            }
+              backgroundColor: "#fff",
+              color: "#2F93F6",
+              border: "1px solid #2F93F6",
+            },
           }}
         >
           Login
         </Button>
         <Typography
           variant="body1"
-          sx={{ color: "#009EF7", textAlign: "end", padding: "0.3rem 0" , "&:hover": {
-            color: "#009cf75c",
-            transition: "0.4s"
-          } }}
+          sx={{
+            color: "#009EF7",
+            textAlign: "end",
+            padding: "0.3rem 0",
+            "&:hover": {
+              color: "#009cf75c",
+              transition: "0.4s",
+            },
+          }}
         >
           Forgot Password?
         </Typography>

@@ -62,17 +62,17 @@ const Verification = () => {
             <Typography sx={{ fontWeight: "600" }} variant="h5">
               Two Step Verification
             </Typography>
-            <Typography variant="body1" sx={{ color: "#B5B5C3" }}>
+            <Typography variant="body1" sx={{ color: "#B5B5C3" , margin: "auto" }}>
               Enter the verification code we sent to{" "}
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: "black", fontWeight: "600" }}
+              sx={{ color: "black", fontWeight: "600" ,  margin: "auto" }}
             >
               ******7859
             </Typography>
-            <Box sx={{ width: "100%", marginTop: "1rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "left" }}>
+            <Box sx={{ width: "100%", marginTop: "1rem" , margin: "auto" }}>
+              <Typography variant="body1" sx={{ textAlign: "center" }}>
                 Type your 6 digit security code
               </Typography>
             </Box>
@@ -84,7 +84,6 @@ const Verification = () => {
               Qayta yuborish
             </Typography>
             <OtpInput
-
               value={confirm}
               onChange={setConfirm}
               numInputs={6}
