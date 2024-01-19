@@ -95,7 +95,6 @@ const ModeratorTable = () => {
         <Box
           sx={{
             display: "flex",
-            // justifyContent: "space-between",
             flexDirection: {
               lg: "column",
               md: "column",

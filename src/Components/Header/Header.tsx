@@ -68,7 +68,8 @@ const Header = ({ setOpenSidebar }: any) => {
             <Box
               sx={{
                 position: "relative",
-                width: { lg: "400px", md: "400px", sm: "350px", xs: "130px" },
+                width: { lg: "400px", md: "400px", sm: "350px", xs: "250px" },
+                marginRight: {lg: '0' , md: '0' , sm: '1rem' , xs: '1rem'}
               }}
             >
               <Input
@@ -77,9 +78,10 @@ const Header = ({ setOpenSidebar }: any) => {
                     lg: "400px",
                     md: "400px",
                     sm: "350px",
-                    xs: "130px",
+                    xs: "250px",
                     padding: "0.2rem 0",
                   },
+                  
                 }}
                 placeholder="Search"
               />
