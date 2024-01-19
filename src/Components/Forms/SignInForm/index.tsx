@@ -129,22 +129,31 @@ const SignInForm = () => {
         >
           Login
         </Button>
-        <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between"}}>
-          <Link to='/signup' style={{textDecoration: "none" , color: "inherit"}}>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "#009EF7",
-              textAlign: "start",
-              padding: "0.3rem 0",
-              "&:hover": {
-                color: "#009cf75c",
-                transition: "0.4s",
-              },
-            }}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link
+            to="/signup"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            You have not account ?
-          </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#009EF7",
+                textAlign: "start",
+                padding: "0.3rem 0",
+                "&:hover": {
+                  color: "#009cf75c",
+                  transition: "0.4s",
+                },
+              }}
+            >
+              Do you not have an account ?
+            </Typography>
           </Link>
           <Typography
             variant="body1"

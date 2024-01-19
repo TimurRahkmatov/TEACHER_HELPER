@@ -58,19 +58,7 @@ const CreateResourcesForm = () => {
           </Box>
           <Box sx={{ width: "50%" }}>
             <FormLabel id="sinf">Sinf</FormLabel>
-            <Select
-              style={{ height: "40px", width: "100%" }}
-              placeholder="Sinfni kiriting"
-              name="sinf"
-              id="sinf"
-            >
-              <MenuItem value={10}>1-sinf</MenuItem>
-              <MenuItem value={20}>2-sinf</MenuItem>
-              <MenuItem value={30}>3-sinf</MenuItem>
-              <MenuItem value={40}>4-sinf</MenuItem>
-              <MenuItem value={50}>5-sinf</MenuItem>
-              <MenuItem value={60}>6-sinf</MenuItem>
-            </Select>
+            
           </Box>
         </Box>
         <Box sx={{ display: "flex", width: "100%", gap: "1rem" }}>
