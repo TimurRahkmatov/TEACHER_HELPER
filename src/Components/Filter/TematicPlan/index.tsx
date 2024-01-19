@@ -26,8 +26,8 @@ const TematicPlanFilter = () => {
       sx={{
         marginTop: "1.5rem",
         display: "flex",
-        justifyContent: "space-between",
-        gap: "1rem",
+        justifyContent: "start",
+        gap: "1.3rem",
         flexWrap: "wrap"
       }}
     >

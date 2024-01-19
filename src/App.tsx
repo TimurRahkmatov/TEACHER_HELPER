@@ -18,8 +18,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="signin" element={<SignIn />} />
-        <Route path="signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="verification" element={<Verification />} />
         <Route path="/" element={<Private />}>
           <Route path="/" element={<Calendar />} />
