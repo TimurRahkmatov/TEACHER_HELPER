@@ -7,8 +7,29 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { base_api } from "../../../Api/base.api";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../store";
+import { EditTopisc } from "../../../store/slices/topics";
 
 const CreateResourcesForm = () => {
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.topic);
+
+  const getAllTopics = async () => {
+    try {
+      const { data } = await base_api.findAllTopics();
+      if (data?.code === 200) {
+        dispatch(EditTopisc(data?.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getAllTopics();
+  }, []);
+
   return (
     <Box>
       <FormControl
@@ -60,7 +81,9 @@ const CreateResourcesForm = () => {
               placeholder="Mavzuni nomini yozing"
               labelId="monday_select"
             >
-              <MenuItem value={10}>Ratsional Tengsizliklar</MenuItem>
+              {state?.topics.map((item:any) => (
+                <MenuItem value={10}>{item?.topic_name}</MenuItem>
+              ))}
               <MenuItem value={20}>Tenglamalar</MenuItem>
               <MenuItem value={30}>Kvadrat tenglamalar</MenuItem>
             </Select>
@@ -68,7 +91,6 @@ const CreateResourcesForm = () => {
           <Box sx={{ width: "50%" }}>
             <FormLabel>Resurs nomi</FormLabel>
             <TextField
-              
               InputProps={{ style: { height: "40px" } }}
               sx={{ width: "100%" }}
               placeholder="Resurs nomini kiriting"
@@ -78,7 +100,7 @@ const CreateResourcesForm = () => {
         <Box>
           <FormLabel>Fayl tanlang</FormLabel>
           <TextField
-          type="file"
+            type="file"
             sx={{ width: "100%" }}
             InputProps={{ style: { height: "40px" } }}
             placeholder="Faylni yuklash uchun faylni tanlang"

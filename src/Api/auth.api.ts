@@ -39,5 +39,5 @@ export const auth_api = {
   passwordChange: (body: IPasswordChange , token:String) => axios.post(BASE_URL + "/auth/password/change" , body , {headers: {
     "Authorization": "Bearer" +  " "  + token
   }}),
-  login: (body: ILogin ) => axios.post(BASE_URL + '/auth/login' , body)
+  login: (body: ILogin ) => axios.post(BASE_URL + '/auth/login' , body),
 };

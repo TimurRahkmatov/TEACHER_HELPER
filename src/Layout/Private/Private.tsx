@@ -3,11 +3,14 @@ import Sidebar from "../../Components/Sidebar";
 import Header from "../../Components/Header";
 import { Navigate, Outlet } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 const Private = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const token = localStorage.getItem("token");
-  
+  if (token) {
+    axios.defaults.headers.common = { Authorization: `bearer ${token}` };
+  }
   return token ? (
     <Box
       sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}

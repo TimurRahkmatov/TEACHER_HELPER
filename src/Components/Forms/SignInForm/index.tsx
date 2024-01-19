@@ -11,14 +11,14 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { auth_api } from "../../../Api/auth.api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 
 const SignInForm = () => {
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassowrd] = useState("");
 
@@ -30,12 +30,12 @@ const SignInForm = () => {
         password: password,
       });
       console.log(data);
-      
-      if(data?.code === 200) {
-        localStorage.setItem("token" , data?.data.token)
-        toast(data?.message , {type: "success"})
-        dispatch(registerAuth({username: username}))
-        navigate("/")
+
+      if (data?.code === 200) {
+        localStorage.setItem("token", data?.data.token);
+        toast(data?.message, { type: "success" });
+        dispatch(registerAuth({ username: username }));
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -129,20 +129,38 @@ const SignInForm = () => {
         >
           Login
         </Button>
-        <Typography
-          variant="body1"
-          sx={{
-            color: "#009EF7",
-            textAlign: "end",
-            padding: "0.3rem 0",
-            "&:hover": {
-              color: "#009cf75c",
-              transition: "0.4s",
-            },
-          }}
-        >
-          Forgot Password?
-        </Typography>
+        <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between"}}>
+          <Link to='/signup' style={{textDecoration: "none" , color: "inherit"}}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#009EF7",
+              textAlign: "start",
+              padding: "0.3rem 0",
+              "&:hover": {
+                color: "#009cf75c",
+                transition: "0.4s",
+              },
+            }}
+          >
+            You have not account ?
+          </Typography>
+          </Link>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#009EF7",
+              textAlign: "end",
+              padding: "0.3rem 0",
+              "&:hover": {
+                color: "#009cf75c",
+                transition: "0.4s",
+              },
+            }}
+          >
+            Forgot Password?
+          </Typography>
+        </Box>
       </FormControl>
     </Box>
   );

@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { base_api } from "../../../Api/base.api";
 import { auth_api } from "../../../Api/auth.api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 
@@ -121,20 +121,38 @@ const SignUpForm = () => {
         >
           Sign Up
         </Button>
-        <Typography
-          variant="body1"
-          sx={{
-            color: "#009EF7",
-            textAlign: "end",
-            padding: "0.3rem 0",
-            "&:hover": {
-              color: "#009cf75c",
-              transition: "0.4s",
-            },
-          }}
-        >
-          Forgot Password?
-        </Typography>
+        <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between"}}>
+          <Link to='/signin' style={{textDecoration: "none" , color: "inherit"}}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#009EF7",
+              textAlign: "start",
+              padding: "0.3rem 0",
+              "&:hover": {
+                color: "#009cf75c",
+                transition: "0.4s",
+              },
+            }}
+          >
+            You have not account ?
+          </Typography>
+          </Link>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#009EF7",
+              textAlign: "end",
+              padding: "0.3rem 0",
+              "&:hover": {
+                color: "#009cf75c",
+                transition: "0.4s",
+              },
+            }}
+          >
+            Forgot Password?
+          </Typography>
+        </Box>
       </FormControl>
     </Box>
   );
