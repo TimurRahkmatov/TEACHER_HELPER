@@ -41,6 +41,7 @@ const TematicPlanFilter = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            color: "grey"
           }}
           id="demo_subject_button"
           aria-controls={open ? "demo-subject-menu" : undefined}

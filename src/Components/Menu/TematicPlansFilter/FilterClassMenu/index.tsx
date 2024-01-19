@@ -24,6 +24,8 @@ const ClassFilterMenu = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          color: "grey"
+
         }}
         id="demo_class_button"
         aria-controls={openClass ? "demo_class_menu" : undefined}

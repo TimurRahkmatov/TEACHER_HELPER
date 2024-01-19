@@ -8,11 +8,23 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
+
+  const navigate = useNavigate()
+
+  const handleRegister = () => {
+    localStorage.setItem("token" , "token"),
+    navigate('/')
+  }
+
+
   return (
     <Box sx={{marginTop: '0.3rem'}}>
       <FormControl
+      component='form'
+      onSubmit={handleRegister}
         sx={{ width: "100%", padding: "0.5rem 0" }}
       >
         <FormLabel
@@ -110,6 +122,11 @@ const SignUpForm = () => {
             color: "#fff",
             textTransform: "none",
             marginTop: "1rem",
+            "&:hover": {
+              backgroundColor: '#fff',
+              color: '#2F93F6',
+              border: '1px solid #2F93F6'
+            }
           }}
         >
           Sign Up

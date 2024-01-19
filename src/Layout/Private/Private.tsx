@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import Sidebar from "../../Components/Sidebar";
 import Header from "../../Components/Header";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useState } from "react";
 
 const Private = () => {
   const [openSidebar , setOpenSidebar] = useState(false)
-  
-  return (
+  const token = localStorage.getItem("token")
+  return token ? (
 
     <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
       <Sidebar setOpenSidebar={setOpenSidebar} open={openSidebar}  />
@@ -16,7 +16,7 @@ const Private = () => {
         <Outlet />
       </Box>
     </Box>
-  );
+  ) : <Navigate to='/signin' />;
 };
 
 export default Private;

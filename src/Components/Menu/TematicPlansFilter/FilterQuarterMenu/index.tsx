@@ -25,6 +25,8 @@ const QuarterFilterMenu = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          color: "grey"
+
         }}
         id="demo_quarter_button"
         aria-controls={openQuarter ? "demo_quarter_menu" : undefined}

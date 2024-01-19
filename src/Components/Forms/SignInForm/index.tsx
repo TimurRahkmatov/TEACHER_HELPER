@@ -1,11 +1,21 @@
 import { AccountCircle } from "@mui/icons-material";
 
 import { Box, Button, FormControl, FormLabel, InputAdornment, TextField, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
+  const navigate = useNavigate()
+
+  const handleLogin = () => {
+    localStorage.setItem("token" , "token"),
+    navigate('/')
+  }
+
   return (
     <Box>
       <FormControl
+      component='form'
+      onSubmit={handleLogin}
         sx={{ width: "100%", padding: "0.5rem 0", marginTop: "0.5rem" }}
       >
         <FormLabel
@@ -66,6 +76,7 @@ const SignInForm = () => {
           }}
         />
         <Button
+        type="submit"
           sx={{
             padding: "0.7rem 0",
             textAlign: "center",
@@ -74,6 +85,11 @@ const SignInForm = () => {
             color: "#fff",
             textTransform: "none",
             marginTop: "1rem",
+            "&:hover": {
+              backgroundColor: '#fff',
+              color: '#2F93F6',
+              border: '1px solid #2F93F6'
+            }
           }}
         >
           Login
