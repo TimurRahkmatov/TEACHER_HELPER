@@ -1,6 +1,31 @@
 import { Box, Container, TextField, Typography } from "@mui/material";
 import PhoneImg from "../../assets/Images/smartphone.svg";
+import { useState } from "react";
+import { auth_api } from "../../Api/auth.api";
+import { Button } from "antd";
 const Verification = () => {
+  const [confirm , setConfirm] = useState(0)
+  const handleVerification =async () => {
+      try {
+        
+        const {data} = await auth_api.verification({username: "998901342386" , code: confirm})
+        console.log(data);
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+  }
+
+  const handleResed =async () => {
+    try {
+      // const {data} = await auth_api.resed({username })
+    } catch (error) {
+      console.log(error);
+      
+    }
+  } 
+
   return (
     <Box>
       <Container>
@@ -39,8 +64,11 @@ const Verification = () => {
                 Type your 6 digit security code
               </Typography>
             </Box>
-            <Box sx={{display: "flex" , justifyContent: 'space-between' , width: '100%' , marginTop: '0.5rem'}}>
+            <Typography component='p' onClick={() => handleResed()} sx={{color: 'blue'}}>Qayta yuborish</Typography>
+            <Box  sx={{display: "flex" , justifyContent: 'space-between' , width: '100%' , marginTop: '0.5rem'}}>
               <TextField
+              value={confirm}
+              onChange={(e:any) => setConfirm(e.target.value)}
                 sx={{ width: "55px", borderRadius: "8px", border: "none" }}
               ></TextField>
               <TextField
@@ -53,6 +81,7 @@ const Verification = () => {
                 sx={{ width: "55px", borderRadius: "8px", border: "none" }}
               ></TextField>
             </Box>
+            <Button onClick={() => handleVerification()}>submit</Button>
           </Box>
         </Box>
       </Container>

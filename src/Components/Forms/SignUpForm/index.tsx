@@ -8,21 +8,57 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+// import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { base_api } from "../../../Api/base.api";
+import { auth_api } from "../../../Api/auth.api";
 import { useNavigate } from "react-router-dom";
 
-const SignUpForm = () => {
-  const navigate = useNavigate()
 
-  const handleRegister = () => {
-    localStorage.setItem("token" , "token"),
-    navigate('/')
-  }
+const SignUpForm = () => {
+  const navigate = useNavigate();
+  const [Sciences, setSciences] = useState([]);
+  const [username, setUsername] = useState("");
+  const [science, setScience] = useState("");
+  
+  const handleRegister = async (e:any):Promise<void> => {
+    e.preventDefault()
+    try {
+      const {data} = await auth_api.register({username: username , science_id: +science})
+      if(data.code === 200) {
+        localStorage.setItem("username" , username)
+        navigate('/verification')
+      }
+    } catch (error: any) {
+      if(error.response.data.code === 1111) {
+        localStorage.setItem("username" , username)
+
+        navigate('/verification')
+      }
+      console.log(error);
+    }
+  };
+
+  const getAllSciences = async () => {
+    try {
+      const { data } = await base_api.findAllSciences();
+      if (data?.code === 200) {
+        setSciences(data?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllSciences();
+  }, []);
 
   return (
-    <Box sx={{marginTop: '0.3rem'}}>
+    <Box sx={{ marginTop: "0.3rem" }}>
       <FormControl
-      component='form'
-      onSubmit={handleRegister}
+        component="form"
+        onSubmit={handleRegister}
         sx={{ width: "100%", padding: "0.5rem 0" }}
       >
         <FormLabel
@@ -31,20 +67,22 @@ const SignUpForm = () => {
             marginBottom: "-0.5rem",
             color: "#000",
           }}
-          htmlFor="email"
+          htmlFor="phone"
         >
-          E-mail or phone number
+          Phone number
         </FormLabel>
         <TextField
           variant="outlined"
           sx={{ padding: "0.7rem 0" }}
           required
           fullWidth
-          id="email"
-          name="email"
+          id="phone"
+          name="phone"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           autoComplete="phoneNumber"
           autoFocus
-          placeholder="Email"
+          placeholder="Phone"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -53,65 +91,16 @@ const SignUpForm = () => {
             ),
           }}
         />
-
-        <FormLabel
-          sx={{
-            marginTop: "0.7rem",
-            marginBottom: "-0.5rem",
-            color: "#000",
-          }}
-          htmlFor="password"
-        >
-          Password
-        </FormLabel>
-        <TextField
-          variant="outlined"
-          sx={{ padding: "0.7rem 0" }}
-          required
-          fullWidth
-          id="password"
-          name="password"
-          autoComplete="phoneNumber"
-          autoFocus
-          placeholder="Password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-        />
-
-        <FormLabel
-          sx={{
-            marginTop: "0.7rem",
-            marginBottom: "-0.5rem",
-            color: "#000",
-          }}
-          htmlFor="reapetPassword"
-        >
-          Repeat Password
-        </FormLabel>
-        <TextField
-          variant="outlined"
-          sx={{ padding: "0.7rem 0" }}
-          required
-          fullWidth
-          id="reapetPassword"
-          name="reapetPassword"
-          autoComplete="phoneNumber"
-          autoFocus
-          placeholder="Repeat Password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <label style={{fontSize: '17px' , fontWeight: "600"}} htmlFor="sciences">Sciences</label>
+        <select className="select" name="" value={science} onChange={(e) => setScience(e.target.value)} id="sciences">
+          {Sciences.map((item: any) => (
+            <>
+              <option value={item.id}>{item?.science_name}</option>
+            </>
+          ))}
+        </select>
         <Button
+        type="submit"
           sx={{
             padding: "0.7rem 0",
             textAlign: "center",
@@ -121,10 +110,10 @@ const SignUpForm = () => {
             textTransform: "none",
             marginTop: "1rem",
             "&:hover": {
-              backgroundColor: '#fff',
-              color: '#2F93F6',
-              border: '1px solid #2F93F6'
-            }
+              backgroundColor: "#fff",
+              color: "#2F93F6",
+              border: "1px solid #2F93F6",
+            },
           }}
         >
           Sign Up
