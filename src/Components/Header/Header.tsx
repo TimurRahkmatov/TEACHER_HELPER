@@ -68,8 +68,7 @@ const Header = ({ setOpenSidebar }: any) => {
             <Box
               sx={{
                 position: "relative",
-                width: { lg: "400px", md: "400px", sm: "350px", xs: "250px" },
-                marginRight: {lg: '0' , md: '0' , sm: '1rem' , xs: '1rem'}
+                width: { lg: "400px", md: "400px", sm: "350px", xs: "150px" }
               }}
             >
               <Input
@@ -78,7 +77,7 @@ const Header = ({ setOpenSidebar }: any) => {
                     lg: "400px",
                     md: "400px",
                     sm: "350px",
-                    xs: "250px",
+                    xs: "150px",
                     padding: "0.2rem 0",
                   },
                   
