@@ -68,7 +68,7 @@ const CreateResourcesForm = () => {
           <Box sx={{ width: "50%" }}>
             <FormLabel>Resurs nomi</FormLabel>
             <TextField
-              type="file"
+              
               InputProps={{ style: { height: "40px" } }}
               sx={{ width: "100%" }}
               placeholder="Resurs nomini kiriting"
@@ -78,6 +78,7 @@ const CreateResourcesForm = () => {
         <Box>
           <FormLabel>Fayl tanlang</FormLabel>
           <TextField
+          type="file"
             sx={{ width: "100%" }}
             InputProps={{ style: { height: "40px" } }}
             placeholder="Faylni yuklash uchun faylni tanlang"
