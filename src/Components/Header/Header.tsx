@@ -43,7 +43,7 @@ const Header = ({ setOpenSidebar }: any) => {
               display: { lg: "none", md: "block", sm: "block", xs: "block" },
               padding: "0.2rem 0.4rem",
               borderRadius: "8px",
-              
+
               "&:hover": {
                 border: "2px solid #40BFC1",
                 backgroundColor: "#40bfc175",
@@ -68,7 +68,7 @@ const Header = ({ setOpenSidebar }: any) => {
             <Box
               sx={{
                 position: "relative",
-                width: { lg: "400px", md: "400px", sm: "350px", xs: "150px" }
+                width: { lg: "400px", md: "400px", sm: "350px", xs: "150px" },
               }}
             >
               <Input
@@ -80,7 +80,6 @@ const Header = ({ setOpenSidebar }: any) => {
                     xs: "150px",
                     padding: "0.2rem 0",
                   },
-                  
                 }}
                 placeholder="Search"
               />
@@ -170,28 +169,28 @@ const Header = ({ setOpenSidebar }: any) => {
                     flexDirection: "column",
                   }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      padding: "0.5rem 1rem",
-                      "&:hover": {
-                        backgroundColor: "#1c80852c",
-                        transition: "0.3s",
-                      },
-                    }}
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to="/application"
                   >
-                    <Description sx={{ color: "#1C7F85" }} />
-                    <Typography variant="body1">
-                      <Link
-                        style={{ color: "inherit", textDecoration: "none" }}
-                        to="/application"
-                      >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        padding: "0.5rem 1rem",
+                        "&:hover": {
+                          backgroundColor: "#1c80852c",
+                          transition: "0.3s",
+                        },
+                      }}
+                    >
+                      <Description sx={{ color: "#1C7F85" }} />
+                      <Typography variant="body1">
                         Moderator bo’lish uchun ariza berish
-                      </Link>
-                    </Typography>
-                  </Box>
+                      </Typography>
+                    </Box>
+                  </Link>
                   <Box
                     sx={{
                       display: "flex",
