@@ -155,20 +155,22 @@ const SignInForm = () => {
               Do you not have an account ?
             </Typography>
           </Link>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "#009EF7",
-              textAlign: "end",
-              padding: "0.3rem 0",
-              "&:hover": {
-                color: "#009cf75c",
-                transition: "0.4s",
-              },
-            }}
-          >
-            Forgot Password?
-          </Typography>
+          <Link style={{textDecoration: "none"}} to='/passwordchange'>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#009EF7",
+                textAlign: "end",
+                padding: "0.3rem 0",
+                "&:hover": {
+                  color: "#009cf75c",
+                  transition: "0.4s",
+                },
+              }}
+            >
+              Forgot Password?
+            </Typography>
+          </Link>
         </Box>
       </FormControl>
     </Box>

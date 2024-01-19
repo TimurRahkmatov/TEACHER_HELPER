@@ -12,31 +12,33 @@ import {
 import { useEffect, useState } from "react";
 import { base_api } from "../../../Api/base.api";
 import { auth_api } from "../../../Api/auth.api";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 
-
 const SignUpForm = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [Sciences, setSciences] = useState([]);
   const [username, setUsername] = useState("");
   const [science, setScience] = useState("");
-  
-  const handleRegister = async (e:any):Promise<void> => {
-    e.preventDefault()
+
+  const handleRegister = async (e: any): Promise<void> => {
+    e.preventDefault();
     try {
-      const {data} = await auth_api.register({username: username , science_id: +science})
-      if(data.code === 200) {
-        dispatch(registerAuth({username: username}))
-        navigate('/verification')
+      const { data } = await auth_api.register({
+        username: username,
+        science_id: +science,
+      });
+      if (data.code === 200) {
+        dispatch(registerAuth({ username: username }));
+        navigate("/verification");
       }
     } catch (error: any) {
-      if(error.response.data.code === 1111) {
-        dispatch(registerAuth({username: username}))
+      if (error.response.data.code === 1111) {
+        dispatch(registerAuth({ username: username }));
 
-        navigate('/verification')
+        navigate("/verification");
       }
       console.log(error);
     }
@@ -94,8 +96,19 @@ const SignUpForm = () => {
             ),
           }}
         />
-        <label style={{fontSize: '17px' , fontWeight: "600"}} htmlFor="sciences">Sciences</label>
-        <select className="select" name="" value={science} onChange={(e) => setScience(e.target.value)} id="sciences">
+        <label
+          style={{ fontSize: "17px", fontWeight: "600" }}
+          htmlFor="sciences"
+        >
+          Sciences
+        </label>
+        <select
+          className="select"
+          name=""
+          value={science}
+          onChange={(e) => setScience(e.target.value)}
+          id="sciences"
+        >
           {Sciences.map((item: any) => (
             <>
               <option value={item.id}>{item?.science_name}</option>
@@ -103,7 +116,7 @@ const SignUpForm = () => {
           ))}
         </select>
         <Button
-        type="submit"
+          type="submit"
           sx={{
             padding: "0.7rem 0",
             textAlign: "center",
@@ -121,22 +134,29 @@ const SignUpForm = () => {
         >
           Sign Up
         </Button>
-        <Box sx={{display: "flex" , alignItems: 'center' , justifyContent: "space-between"}}>
-          
-          <Typography
-            variant="body1"
-            sx={{
-              color: "#009EF7",
-              textAlign: "end",
-              padding: "0.3rem 0",
-              "&:hover": {
-                color: "#009cf75c",
-                transition: "0.4s",
-              },
-            }}
-          >
-            Forgot Password?
-          </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link style={{textDecoration: "none"}} to='/passwordchange'>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#009EF7",
+                textAlign: "end",
+                padding: "0.3rem 0",
+                "&:hover": {
+                  color: "#009cf75c",
+                  transition: "0.4s",
+                },
+              }}
+            >
+              Forgot Password?
+            </Typography>
+          </Link>
         </Box>
       </FormControl>
     </Box>

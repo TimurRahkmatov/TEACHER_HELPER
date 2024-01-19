@@ -14,7 +14,7 @@ import { EditTopisc } from "../../../store/slices/topics";
 
 const CreateResourcesForm = () => {
   const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.topic);
+  // const state = useAppSelector((state) => state.topic);
 
   const getAllTopics = async () => {
     try {
