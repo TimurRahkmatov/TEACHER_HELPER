@@ -70,9 +70,11 @@ const TematicPlanFilter = () => {
             horizontal: "left",
           }}
         >
-          <MenuItem onClick={handleClose}>Birinchi jahon urushi</MenuItem>
-          <MenuItem onClick={handleClose}>Iratsional tenglamalar</MenuItem>
-          <MenuItem onClick={handleClose}>lagarifm</MenuItem>
+          <MenuItem onClick={handleClose}>Fizika</MenuItem>
+          <MenuItem onClick={handleClose}>Algebra</MenuItem>
+          <MenuItem onClick={handleClose}>Geometriya</MenuItem>
+          <MenuItem onClick={handleClose}>Tarix</MenuItem>
+          <MenuItem onClick={handleClose}>Kimyo</MenuItem>
         </Menu>
       </Box>
       <ClassFilterMenu />

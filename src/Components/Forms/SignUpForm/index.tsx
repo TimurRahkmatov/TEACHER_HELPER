@@ -11,14 +11,12 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
-
   const navigate = useNavigate()
 
   const handleRegister = () => {
     localStorage.setItem("token" , "token"),
     navigate('/')
   }
-
 
   return (
     <Box sx={{marginTop: '0.3rem'}}>
