@@ -81,11 +81,7 @@ const CreateResourcesForm = () => {
               placeholder="Mavzuni nomini yozing"
               labelId="monday_select"
             >
-              {state?.topics.map((item:any) => (
-                <MenuItem value={10}>{item?.topic_name}</MenuItem>
-              ))}
-              <MenuItem value={20}>Tenglamalar</MenuItem>
-              <MenuItem value={30}>Kvadrat tenglamalar</MenuItem>
+              
             </Select>
           </Box>
           <Box sx={{ width: "50%" }}>

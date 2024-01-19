@@ -57,7 +57,7 @@ const SignInForm = () => {
           }}
           htmlFor="phoneNumber"
         >
-          E-mail or phone number
+          Only phone number
         </FormLabel>
         <TextField
           onChange={(e) => setUsername(e.target.value)}

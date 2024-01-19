@@ -72,7 +72,7 @@ const SignUpForm = () => {
           }}
           htmlFor="phone"
         >
-          Phone number
+          Only phone number
         </FormLabel>
         <TextField
           variant="outlined"
