@@ -97,7 +97,7 @@ const SignUpForm = () => {
           }}
         />
         <label
-          style={{ fontSize: "17px", fontWeight: "600" }}
+          style={{ fontSize: "20px" , marginTop: '0.5rem' }}
           htmlFor="sciences"
         >
           Sciences
