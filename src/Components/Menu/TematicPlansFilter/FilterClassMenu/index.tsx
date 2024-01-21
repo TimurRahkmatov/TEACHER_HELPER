@@ -1,17 +1,38 @@
 import { KeyboardArrowDown, LocationOff } from "@mui/icons-material";
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { base_api } from "../../../../Api/base.api";
+import { useAppDispatch, useAppSelector } from "../../../../store";
+import { EditClass } from "../../../../store/slices/class";
 
 const ClassFilterMenu = () => {
+  const dispatch = useAppDispatch();
   const [classState, setClassState] = React.useState<null | HTMLElement>(null);
+  const state = useAppSelector((state) => state.class.classes)
+  
   const openClass = Boolean(classState);
+
+  const getAllClasses = async (): Promise<void> => {
+    try {
+      const { data } = await base_api.findAllClasses();
+      if (data.code === 200) {
+        dispatch(EditClass(data.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllClasses();
+  }, []);
+
   const handleClassClick = (event: React.MouseEvent<HTMLElement>) => {
     setClassState(event.currentTarget);
   };
 
-
   const handleClose = () => {
-    setClassState(null)
+    setClassState(null);
   };
   return (
     <Box>
@@ -24,8 +45,7 @@ const ClassFilterMenu = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          color: "grey"
-
+          color: "grey",
         }}
         id="demo_class_button"
         aria-controls={openClass ? "demo_class_menu" : undefined}
@@ -54,13 +74,9 @@ const ClassFilterMenu = () => {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleClose}>1-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>2-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>3-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>4-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>5-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>6-sinf</MenuItem>
-        <MenuItem onClick={handleClose}>7-sinf</MenuItem>
+        {state.map((item:any) => (
+          <MenuItem key={item.id} onClick={handleClose}>{item.class_name}</MenuItem>
+        ))}
       </Menu>
     </Box>
   );
