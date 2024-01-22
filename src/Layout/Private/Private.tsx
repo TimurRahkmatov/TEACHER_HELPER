@@ -8,8 +8,9 @@ import axios from "axios";
 const Private = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const token = localStorage.getItem("token");
+
   if (token) {
-    axios.defaults.headers.common = { Authorization: `bearer ${token}` };
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
   }
   return token ? (
     <Box

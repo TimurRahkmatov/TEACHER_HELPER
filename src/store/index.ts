@@ -4,12 +4,14 @@ import authReducer from "./slices/auth";
 import topicReducer from "./slices/topics";
 import classReducer from "./slices/class";
 import scienceReducer from "./slices/science";
+import moderatorReducer from "./slices/moderator";
 const store = configureStore({
   reducer: {
     auth: authReducer,
     topic: topicReducer,
     class: classReducer,
-    science: scienceReducer
+    science: scienceReducer,
+    moderator: moderatorReducer
     
   },
 });

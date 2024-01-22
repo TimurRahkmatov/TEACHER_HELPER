@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import TematicPlanFilter from "../../../Components/Filter/TematicPlan";
-import ResourcesModeratorTable from "../../../Components/Tables/Resources/ResourcesModeratorTable";
+import ModeratorResourceCard from "../../../Components/Cards/ModeratorResource";
 
 const ModeratorResources = () => {
   return (
@@ -39,7 +39,7 @@ const ModeratorResources = () => {
           </Button>
         </Box>
         <TematicPlanFilter />
-        <ResourcesModeratorTable />
+        <ModeratorResourceCard />
       </Container>
     </Box>
   );

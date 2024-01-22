@@ -21,6 +21,9 @@ const fanlar = [
   },
 ];
 const SciencesCard = () => {
+
+  // const getAllResources = 
+
   return (
     <Box
       sx={{

@@ -25,10 +25,10 @@ interface IPasswordChange {
     password: string,
 }
 
-const token = localStorage.getItem("token")
-if (token) {
-    axios.defaults.headers.common = { Authorization: `bearer ${token}` };
-  }
+// const token = localStorage.getItem("token")
+// if (token) {
+//     axios.defaults.headers.common = { Authorization: `bearer ${token}` };
+//   }
 
 
 export const auth_api = {

@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  TextField,
-} from "@mui/material";
+import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
 import { base_api } from "../../../Api/base.api";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
@@ -18,13 +12,21 @@ const CreateResourcesForm = () => {
   const [resourceName, setResourceName] = useState("");
   const [file, setFile] = useState("");
 
+  const handleFileSelected = (e: any): void => {
+    const files:any = Array.from(e.target.files);
+    setFile(files);
+  };
+
+  console.log("file" , file);
+  
+
   const handleCreateResources = async (e: any): Promise<void> => {
     e.preventDefault();
     try {
       const { data } = await moderator_api.createResource({
         topic_id: +topic,
         resource_name: resourceName,
-        files: file,
+        "files[]": file[0],
       });
       console.log(data);
     } catch (error) {
@@ -89,8 +91,7 @@ const CreateResourcesForm = () => {
         <Box>
           <FormLabel>Fayl tanlang</FormLabel>
           <TextField
-            value={file}
-            onChange={(e) => setFile(e.target.value)}
+            onChange={handleFileSelected}
             type="file"
             sx={{ width: "100%" }}
             InputProps={{ style: { height: "40px" } }}
@@ -98,7 +99,7 @@ const CreateResourcesForm = () => {
           />
         </Box>
         <Button
-        type="submit"
+          type="submit"
           sx={{
             width: "100%",
             color: "#FFF",
