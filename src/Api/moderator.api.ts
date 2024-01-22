@@ -8,11 +8,11 @@ interface IResourceCreate {
   files: string;
 }
 
-
 export const moderator_api = {
   createResource: (body: any) =>
     axios.post(BASE_URL + "/moderator/resource", body),
-  getAllResources: () =>
-    axios.get(BASE_URL + "/moderator/resource"),
-    getByIdRerource: (id:number) => axios.get(BASE_URL + "/moderator/resource/" + id)
+  getAllResources: () => axios.get(BASE_URL + "/moderator/resource"),
+  getByIdRerource: (id: number) =>
+    axios.get(BASE_URL + "/moderator/resource/" + id),
+  deleteResource: (id:number) => axios.delete(BASE_URL + "/moderator/resource/" + id)
 };

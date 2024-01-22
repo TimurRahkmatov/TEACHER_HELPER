@@ -1,4 +1,4 @@
-import { Delete, RemoveRedEye, StickyNote2 } from "@mui/icons-material";
+import { RemoveRedEye, StickyNote2 } from "@mui/icons-material";
 import {
   Box,
   TableCell,
@@ -11,6 +11,7 @@ import {
 import { moderator_api } from "../../../Api/moderator.api";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ResourceDelete from "../../Delete/Moderator";
 
 const ResourcesModeratorTable = () => {
   const { id }: any = useParams();
@@ -73,7 +74,7 @@ const ResourcesModeratorTable = () => {
               >
                 <RemoveRedEye />
                 <StickyNote2 />
-                <Delete />
+                <ResourceDelete  id={data.id} />
               </TableCell>
             </TableRow>
           </TableBody>
