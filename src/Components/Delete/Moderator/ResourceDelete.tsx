@@ -8,14 +8,16 @@ interface ID {
 }
 
 const ResourceDelete = ({ id }: ID) => {
-  console.log(id);
-
   const handleDelete = async (): Promise<void> => {
     try {
-      const { data } = await moderator_api.deleteResource(id);
-      console.log(data);
-      if(data.code === 200) {
-        toast(data.message , {type: "success"})
+      const deleteConfirm = confirm("siz delete qilishni xohlaysizmi");
+      if(deleteConfirm === true) {
+          const { data } = await moderator_api.deleteResource(id);
+          console.log(data);
+          if (data.code === 200) {
+            toast(data.message, { type: "success" });
+          }
+      }else {
         
       }
     } catch (error) {
