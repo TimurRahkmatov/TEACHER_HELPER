@@ -13,12 +13,11 @@ const CreateResourcesForm = () => {
   const [file, setFile] = useState("");
 
   const handleFileSelected = (e: any): void => {
-    const files:any = Array.from(e.target.files);
+    const files: any = Array.from(e.target.files);
     setFile(files);
   };
 
-  console.log("file" , file);
-  
+  console.log("file", file);
 
   const handleCreateResources = async (e: any): Promise<void> => {
     e.preventDefault();
@@ -33,6 +32,7 @@ const CreateResourcesForm = () => {
       console.log(error);
     }
   };
+
   const getAllTopics = async (): Promise<void> => {
     try {
       const { data } = await base_api.findAllTopics();

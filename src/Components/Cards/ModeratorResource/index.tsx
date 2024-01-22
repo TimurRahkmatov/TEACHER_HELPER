@@ -9,13 +9,10 @@ import { Link } from "react-router-dom";
 const ModeratorResourceCard = () => {
   const dispatch = useAppDispatch();
   const resources = useAppSelector((state) => state.moderator.resources);
-  console.log("state sdf dsf", resources);
 
   const getAllModeratorResource = async (): Promise<void> => {
     try {
       const { data } = await moderator_api.getAllResources();
-      console.log(data);
-
       dispatch(EditModeratorResource(data));
     } catch (error) {
       console.log(error);

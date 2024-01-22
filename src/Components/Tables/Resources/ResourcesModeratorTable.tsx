@@ -7,14 +7,17 @@ import {
   TableRow,
   Table,
   TableBody,
+  Button,
 } from "@mui/material";
 import { moderator_api } from "../../../Api/moderator.api";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ResourceDelete from "../../Delete/Moderator";
+import ResourceEditModal from "../../Modals/Moderator/ResourceEditModal";
 
 const ResourcesModeratorTable = () => {
   const { id }: any = useParams();
+  const [open, setOpen] = useState(false);
 
   const [data, setData]: any = useState({});
 
@@ -73,7 +76,8 @@ const ResourcesModeratorTable = () => {
                 align="center"
               >
                 <RemoveRedEye />
-                <StickyNote2 />
+                <ResourceEditModal setOpen={setOpen} open={open} id={data.id} />
+                <Button  onClick={() => setOpen(true)} ><StickyNote2 /></Button>
                 <ResourceDelete  id={data.id} />
               </TableCell>
             </TableRow>
