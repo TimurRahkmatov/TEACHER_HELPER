@@ -5,6 +5,8 @@ import {
   FormControl,
   FormLabel,
   InputAdornment,
+  MenuItem,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -44,19 +46,22 @@ const SignUpForm = () => {
     }
   };
 
+  type ScienceType = {
+     id: number,
+     science_name: string,
+     science_group: string
+  }
   const getAllSciences = async () => {
     try {
       const { data } = await base_api.findAllSciences();
-      console.log(data);
-      
       if (data?.code === 200) {
         setSciences(data?.data);
       }
     } catch (error) {
-      console.log("get Error",error);
+      console.log("get Error", error);
     }
   };
-
+  
   useEffect(() => {
     getAllSciences();
   }, []);
@@ -98,25 +103,14 @@ const SignUpForm = () => {
             ),
           }}
         />
-        <label
-          style={{ fontSize: "20px" , marginTop: '0.5rem' }}
-          htmlFor="sciences"
-        >
-          Sciences
-        </label>
-        <select
-          className="select"
-          name=""
-          value={science}
-          onChange={(e) => setScience(e.target.value)}
-          id="sciences"
-        >
-          {Sciences.map((item: any) => (
-            <>
-              <option value={item.id}>{item?.science_name}</option>
-            </>
+        <FormLabel htmlFor="scienceSelect">Sciences</FormLabel>
+        <Select  onChange={(e) => setScience(e.target.value)} value={science} labelId="Fanlar" id="scienceSelect">
+          {Sciences?.map((item: ScienceType) => (
+            <MenuItem key={item?.id} value={item?.science_name}>
+              {item?.science_name}
+            </MenuItem>
           ))}
-        </select>
+        </Select>
         <Button
           type="submit"
           sx={{
@@ -143,7 +137,7 @@ const SignUpForm = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link style={{textDecoration: "none"}} to='/passwordchange'>
+          <Link style={{ textDecoration: "none" }} to="/passwordchange">
             <Typography
               variant="body1"
               sx={{

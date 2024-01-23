@@ -1,6 +1,17 @@
-import { Box, Button, FormControl, FormLabel, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { base_api } from "../../../Api/base.api";
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { EditTopisc } from "../../../store/slices/topics";
 import { moderator_api } from "../../../Api/moderator.api";
@@ -10,18 +21,17 @@ const CreateResourcesForm = () => {
   const state = useAppSelector((state) => state.topic.topics);
   const [topic, setTopic] = useState("");
   const [resourceName, setResourceName] = useState("");
-  const [file, setFile]:any = useState(null);
+  const [file, setFile]: any = useState(null);
 
   const handleCreateResources = async (e: any): Promise<void> => {
     e.preventDefault();
-    const formData:FormData = new FormData()
-    formData.append("file" , file)
-    
+    const formData: FormData = new FormData();
+    formData.append("file", file);
     try {
       const { data } = await moderator_api.createResource({
         topic_id: +topic,
         resource_name: resourceName,
-        "files[]":formData
+        "files[]": formData,
       });
       console.log(data);
     } catch (error) {
@@ -40,6 +50,17 @@ const CreateResourcesForm = () => {
     }
   };
 
+  interface IAdd {
+    class: string;
+    quarter: string;
+    science: string;
+  }
+  interface Iitem {
+    id: number;
+    topic_name: string;
+    add: IAdd;
+  }
+
   useEffect(() => {
     getAllTopics();
   }, []);
@@ -56,24 +77,38 @@ const CreateResourcesForm = () => {
           gap: "1.5rem",
         }}
       >
-        <Box sx={{ display: "flex", width: "100%", gap: "1rem" , alignItems: 'center' }}>
-          <Box sx={{ width: "50%" , display: "flex" , justifyContent: 'center' , flexDirection: "column"  }}>
-            <label htmlFor="topic">Mavzu</label>
-            <select
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              style={{ width: "100%", padding: "0.6rem" }}
-              name=""
-              id="topic"
-            >
-              {state.map((item: any) => (
-                <option key={item.id} value={item.id}>
-                  {item.topic_name}
-                </option>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            gap: "1rem",
+          }}
+        >
+          <Box
+            sx={{
+              width: "50%",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <FormLabel id="Mavzu">Mavzu</FormLabel>
+            <Select placeholder="Mavzuni tanlang" onChange={(e) => setTopic(e.target.value)} value={topic} sx={{ height: "40px" }} labelId="Mavzu" id="topicSelect">
+              {state?.map((item: Iitem) => (
+                <MenuItem key={item?.id} value={item?.topic_name}>
+                  {item?.topic_name}
+                </MenuItem>
               ))}
-            </select>
+            </Select>
           </Box>
-          <Box sx={{ width: "50%" , display: "flex" , flexDirection: 'column' , justifyContent: "center"  }}>
+          <Box
+            sx={{
+              width: "50%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <FormLabel>Resurs nomi</FormLabel>
             <TextField
               onChange={(e) => setResourceName(e.target.value)}
@@ -87,7 +122,7 @@ const CreateResourcesForm = () => {
         <Box>
           <FormLabel>Fayl tanlang</FormLabel>
           <TextField
-            onChange={(e:any) => setFile(e.target.files[0])}
+            onChange={(e: any) => setFile(e.target.files[0])}
             type="file"
             sx={{ width: "100%" }}
             InputProps={{ style: { height: "40px" } }}
