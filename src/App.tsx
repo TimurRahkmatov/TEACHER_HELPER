@@ -15,6 +15,7 @@ import ScienceById from "./Pages/Resources/ScienceById/ScienceById";
 import Applications from "./Pages/Applications";
 import PasswordChange from "./Pages/PasswordChange";
 import ModeratorByIdResource from "./Pages/Resources/ModeratorByIdResource";
+import Moderator from "./Layout/Moderator";
 
 function App() {
   return (
@@ -33,13 +34,24 @@ function App() {
             path="/recources/science/class/1"
             element={<ResourcesModerator />}
           />
-          <Route path="/recources/science/class/moderator/science/:id" element={<ScienceById />}/>
-          <Route path="/recources/science/class/moderator/:id" element={<ModeratorById />}/>
+          <Route
+            path="/recources/science/class/moderator/science/:id"
+            element={<ScienceById />}
+          />
+          <Route
+            path="/recources/science/class/moderator/:id"
+            element={<ModeratorById />}
+          />
+
+          <Route path="/application" element={<Applications />} />
+          <Route
+            path="/moderator/resource/:id"
+            element={<ModeratorByIdResource />}
+          />
+        </Route>
+        <Route path="/" element={<Moderator />}>
           <Route path="/create/resources" element={<CreateResources />} />
           <Route path="/moderator/resources" element={<ModeratorResources />} />
-          <Route path="/application" element={<Applications />} />
-          <Route path="/moderator/resource/:id" element={< ModeratorByIdResource/>} />
-
         </Route>
       </Routes>
     </>

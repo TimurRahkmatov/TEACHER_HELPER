@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import TematicPlanFilter from "../../../Components/Filter/TematicPlan";
 import ModeratorResourceCard from "../../../Components/Cards/ModeratorResource";
+import { Link } from "react-router-dom";
 
 const ModeratorResources = () => {
   return (
@@ -25,18 +26,20 @@ const ModeratorResources = () => {
           <Typography variant="body1" sx={{ fontWeight: "600" }}>
             Resurs haqida ma’lumot
           </Typography>
-          <Button
-            sx={{
-              padding: "0.3rem 1rem",
-              borderRadius: "10px",
-              
-              textTransform: "capitalize",
-              backgroundColor: "#40BFC1",
-              color: "#fff"
-            }}
-          >
-            Resurs yuklash
-          </Button>
+          <Link to='/create/resources'>
+            <Button
+              sx={{
+                padding: "0.3rem 1rem",
+                borderRadius: "10px",
+
+                textTransform: "capitalize",
+                backgroundColor: "#40BFC1",
+                color: "#fff",
+              }}
+            >
+              Resurs yuklash
+            </Button>
+          </Link>
         </Box>
         <TematicPlanFilter />
         <ModeratorResourceCard />

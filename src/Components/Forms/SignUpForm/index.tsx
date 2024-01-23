@@ -47,11 +47,13 @@ const SignUpForm = () => {
   const getAllSciences = async () => {
     try {
       const { data } = await base_api.findAllSciences();
+      console.log(data);
+      
       if (data?.code === 200) {
         setSciences(data?.data);
       }
     } catch (error) {
-      console.log(error);
+      console.log("get Error",error);
     }
   };
 

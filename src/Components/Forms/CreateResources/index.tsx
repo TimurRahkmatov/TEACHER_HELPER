@@ -10,22 +10,18 @@ const CreateResourcesForm = () => {
   const state = useAppSelector((state) => state.topic.topics);
   const [topic, setTopic] = useState("");
   const [resourceName, setResourceName] = useState("");
-  const [file, setFile] = useState("");
-
-  const handleFileSelected = (e: any): void => {
-    const files: any = Array.from(e.target.files);
-    setFile(files);
-  };
-
-  console.log("file", file);
+  const [file, setFile]:any = useState(null);
 
   const handleCreateResources = async (e: any): Promise<void> => {
     e.preventDefault();
+    const formData:FormData = new FormData()
+    formData.append("file" , file)
+    
     try {
       const { data } = await moderator_api.createResource({
         topic_id: +topic,
         resource_name: resourceName,
-        "files[]": file[0],
+        "files[]":formData
       });
       console.log(data);
     } catch (error) {
@@ -60,8 +56,8 @@ const CreateResourcesForm = () => {
           gap: "1.5rem",
         }}
       >
-        <Box sx={{ display: "flex", width: "100%", gap: "1rem" }}>
-          <Box sx={{ width: "50%" }}>
+        <Box sx={{ display: "flex", width: "100%", gap: "1rem" , alignItems: 'center' }}>
+          <Box sx={{ width: "50%" , display: "flex" , justifyContent: 'center' , flexDirection: "column"  }}>
             <label htmlFor="topic">Mavzu</label>
             <select
               value={topic}
@@ -77,7 +73,7 @@ const CreateResourcesForm = () => {
               ))}
             </select>
           </Box>
-          <Box sx={{ width: "50%" }}>
+          <Box sx={{ width: "50%" , display: "flex" , flexDirection: 'column' , justifyContent: "center"  }}>
             <FormLabel>Resurs nomi</FormLabel>
             <TextField
               onChange={(e) => setResourceName(e.target.value)}
@@ -91,7 +87,7 @@ const CreateResourcesForm = () => {
         <Box>
           <FormLabel>Fayl tanlang</FormLabel>
           <TextField
-            onChange={handleFileSelected}
+            onChange={(e:any) => setFile(e.target.files[0])}
             type="file"
             sx={{ width: "100%" }}
             InputProps={{ style: { height: "40px" } }}
