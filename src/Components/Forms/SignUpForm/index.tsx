@@ -23,11 +23,14 @@ const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [science, setScience] = useState("");
 
+  const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
+
+
   const handleRegister = async (e: any): Promise<void> => {
     e.preventDefault();
     try {
       const { data } = await auth_api.register({
-        username: username,
+        username: PhoneNumber,
         science_id: +science,
       });
       if (data.code === 200) {

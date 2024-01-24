@@ -23,11 +23,17 @@ const SignInForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassowrd] = useState("");
 
+
+  const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
+
+  
+  
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
       const { data } = await auth_api.login({
-        username: username,
+        username: PhoneNumber,
         password: password,
       });
       if (data?.code === 200) {
