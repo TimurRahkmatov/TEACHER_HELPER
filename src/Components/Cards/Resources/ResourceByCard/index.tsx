@@ -23,7 +23,7 @@ const ResourceByIdCard = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{marginTop: '2rem'}}>
       <Box
         sx={{
           width: "100%",

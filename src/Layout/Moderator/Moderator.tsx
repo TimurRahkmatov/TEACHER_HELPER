@@ -3,9 +3,14 @@ import ModeratorSidebar from "../../Components/ModeratorSidebar";
 import Header from "../../Components/Header";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 const Moderator = () => {
     const [openSidebar, setOpenSidebar] = useState(false);
+    const token = localStorage.getItem("token");
+  if (token) {
+    axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+  }
   return (
     <Box
       sx={{ width: "100%", display: "flex", justifyContent: "space-between" }}

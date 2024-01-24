@@ -8,13 +8,11 @@ import {
   TextField,
 } from "@mui/material";
 import { base_api } from "../../../Api/base.api";
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { EditTopisc } from "../../../store/slices/topics";
 import { moderator_api } from "../../../Api/moderator.api";
+import { toast } from "react-toastify";
 
 const CreateResourcesForm = () => {
   const dispatch = useAppDispatch();
@@ -25,15 +23,15 @@ const CreateResourcesForm = () => {
 
   const handleCreateResources = async (e: any): Promise<void> => {
     e.preventDefault();
-    const formData: FormData = new FormData();
-    formData.append("file", file);
+    var formdata = new FormData();
+    formdata.append("topic_id", topic);
+    formdata.append("resource_name", resourceName);
+    formdata.append("files[]", file);
     try {
-      const { data } = await moderator_api.createResource({
-        topic_id: +topic,
-        resource_name: resourceName,
-        "files[]": formData,
-      });
-      console.log(data);
+      const { data } = await moderator_api.createResource(formdata);
+      if (data.code === 200) {
+        toast(data.message, { type: "success" });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +52,8 @@ const CreateResourcesForm = () => {
     class: string;
     quarter: string;
     science: string;
-  } interface Iitem {
+  }
+  interface Iitem {
     id: number;
     topic_name: string;
     add: IAdd;
@@ -92,9 +91,16 @@ const CreateResourcesForm = () => {
             }}
           >
             <FormLabel id="Mavzu">Mavzu</FormLabel>
-            <Select placeholder="Mavzuni tanlang" onChange={(e) => setTopic(e.target.value)} value={topic} sx={{ height: "40px" }} labelId="Mavzu" id="topicSelect">
+            <Select
+              placeholder="Mavzuni tanlang"
+              onChange={(e) => setTopic(e.target.value)}
+              value={topic}
+              sx={{ height: "40px" }}
+              labelId="Mavzu"
+              id="topicSelect"
+            >
               {state?.map((item: Iitem) => (
-                <MenuItem key={item?.id} value={item?.topic_name}>
+                <MenuItem key={item?.id} value={item?.id}>
                   {item?.topic_name}
                 </MenuItem>
               ))}
