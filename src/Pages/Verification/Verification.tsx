@@ -6,7 +6,9 @@ import { Button } from "antd";
 import { useAppSelector } from "../../store";
 import OtpInput from "react-otp-input";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const Verification = () => {
+  const navigate = useNavigate()
   const [confirm, setConfirm] = useState('');
   const state = useAppSelector((state) => state.auth);
   
@@ -19,6 +21,7 @@ const Verification = () => {
       if(data?.success === true) {
         toast(data?.message , {type: "success"})
         localStorage.setItem("token" , data?.data.token)
+        navigate("/passwordchange")
       }
       console.log(data);
     } catch (error) {

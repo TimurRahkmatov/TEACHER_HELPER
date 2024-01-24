@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { auth_api } from "../../Api/auth.api";
+import { toast } from "react-toastify";
 
 const PasswordChange = () => {
   const [change_password, setChangePassword] = useState("");
@@ -19,7 +20,9 @@ const PasswordChange = () => {
         { password: change_password },
         token + ""
       );
-      console.log(data);
+      if(data.code === 200) {
+        toast(data.message , {type: "info"})
+      }
     } catch (error) {
       console.log(error);
     }

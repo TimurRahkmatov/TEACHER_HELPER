@@ -35,6 +35,12 @@ const ModeratorResources = () => {
                 textTransform: "capitalize",
                 backgroundColor: "#40BFC1",
                 color: "#fff",
+                border: "1px solid #40BFC1",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#40BFC1",
+                  border: "1px solid #40BFC1"
+                }
               }}
             >
               Resurs yuklash
