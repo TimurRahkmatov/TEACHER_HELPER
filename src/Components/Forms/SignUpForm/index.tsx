@@ -1,19 +1,17 @@
-import { AccountCircle } from "@mui/icons-material";
 import {
   Box,
   Button,
   FormControl,
   FormLabel,
-  InputAdornment,
   MenuItem,
   Select,
-  TextField,
   Typography,
 } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { base_api } from "../../../Api/base.api";
 import { auth_api } from "../../../Api/auth.api";
+import { InputMask } from '@react-input/mask';
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
@@ -77,33 +75,14 @@ const SignUpForm = () => {
           sx={{
             marginTop: "0.7rem",
             marginBottom: "-0.5rem",
-            color: "#000",
+            color: "grey",
           }}
           htmlFor="phone"
         >
           Only phone number
         </FormLabel>
-        <TextField
-          variant="outlined"
-          sx={{ padding: "0.7rem 0" }}
-          required
-          fullWidth
-          id="phone"
-          name="phone"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autoComplete="phoneNumber"
-          autoFocus
-          placeholder="Phone"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <FormLabel htmlFor="scienceSelect">Sciences</FormLabel>
+       <InputMask id="phone" value={username}  onChange={(e) => setUsername(e.target.value)} style={{height: "54px" , marginTop: '0.6rem' , fontSize: "18px" , paddingLeft: "15px"}} mask="998 (__) ___-__-__" replacement={{ _: /\d/ }} />
+        <FormLabel sx={{marginTop: '1rem'}} htmlFor="scienceSelect">Sciences</FormLabel>
         <Select  onChange={(e) => setScience(e.target.value)} value={science} labelId="Fanlar" id="scienceSelect">
           {Sciences?.map((item: ScienceType) => (
             <MenuItem key={item?.id} value={item?.id}>
@@ -111,6 +90,7 @@ const SignUpForm = () => {
             </MenuItem>
           ))}
         </Select>
+        
         <Button
           type="submit"
           sx={{

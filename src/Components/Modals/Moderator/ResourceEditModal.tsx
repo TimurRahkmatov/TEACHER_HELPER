@@ -121,7 +121,7 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
                 ))}
               </Select>
 
-              <Typography variant="body2" sx={{ marginTop: " 2rem" }}>
+              <Typography variant="body2" sx={{ marginTop: "1rem" }}>
                 type the name of the resource you want to change
               </Typography>
               <TextField
@@ -139,7 +139,7 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
                 onClick={() => handleEditResource()}
                 sx={{
                   width: "100%",
-                  marginTop: "1rem",
+                  marginTop: "1.5rem",
                   border: "1px solid blue",
                 }}
               >
