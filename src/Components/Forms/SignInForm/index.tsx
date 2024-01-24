@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
+import { InputMask } from "@react-input/mask";
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -36,11 +37,11 @@ const SignInForm = () => {
         navigate("/");
       }
     } catch (error: any) {
-      if(error?.response?.data.message) {
-        toast(error?.response?.data.message , {type: "error"})
+      if (error?.response?.data.message) {
+        toast(error?.response?.data.message, { type: "error" });
       }
       if (error?.response?.data?.data?.password) {
-        toast(error?.response?.data.data.password , {type: "warning"})
+        toast(error?.response?.data.data.password, { type: "warning" });
       }
       console.log(error);
     }
@@ -59,31 +60,24 @@ const SignInForm = () => {
             marginBottom: "-0.5rem",
             color: "#000",
           }}
-          htmlFor="phoneNumber"
+          htmlFor="phone"
         >
           Only phone number
         </FormLabel>
-        <TextField
-          onChange={(e) => setUsername(e.target.value)}
+        <InputMask
+          id="phone"
+          placeholder="Your phone number"
           value={username}
-          variant="outlined"
-          sx={{ padding: "0.7rem 0" }}
-          required
-          fullWidth
-          id="phoneNumber"
-          name="phoneNumber"
-          autoComplete="phoneNumber"
-          autoFocus
-          placeholder="Enter your phone or email"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
+          onChange={(e) => setUsername(e.target.value)}
+          style={{
+            height: "54px",
+            marginTop: "0.6rem",
+            fontSize: "18px",
+            paddingLeft: "15px",
           }}
+          mask="998 (__) ___-__-__"
+          replacement={{ _: /\d/ }}
         />
-
         <FormLabel
           sx={{
             marginTop: "0.7rem",
@@ -114,6 +108,7 @@ const SignInForm = () => {
             ),
           }}
         />
+
         <Button
           type="submit"
           sx={{
@@ -159,7 +154,7 @@ const SignInForm = () => {
               Do you not have an account ?
             </Typography>
           </Link>
-          <Link style={{textDecoration: "none"}} to='/passwordchange'>
+          <Link style={{ textDecoration: "none" }} to="/passwordchange">
             <Typography
               variant="body1"
               sx={{

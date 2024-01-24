@@ -81,7 +81,7 @@ const SignUpForm = () => {
         >
           Only phone number
         </FormLabel>
-       <InputMask id="phone" value={username}  onChange={(e) => setUsername(e.target.value)} style={{height: "54px" , marginTop: '0.6rem' , fontSize: "18px" , paddingLeft: "15px"}} mask="998 (__) ___-__-__" replacement={{ _: /\d/ }} />
+       <InputMask placeholder="Your phone number" id="phone" value={username}  onChange={(e) => setUsername(e.target.value)} style={{height: "54px" , marginTop: '0.6rem' , fontSize: "18px" , paddingLeft: "15px" }} mask="998 (__) ___-__-__" replacement={{ _: /\d/ }} />
         <FormLabel sx={{marginTop: '1rem'}} htmlFor="scienceSelect">Sciences</FormLabel>
         <Select  onChange={(e) => setScience(e.target.value)} value={science} labelId="Fanlar" id="scienceSelect">
           {Sciences?.map((item: ScienceType) => (
