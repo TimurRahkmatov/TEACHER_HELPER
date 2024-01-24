@@ -44,14 +44,14 @@ function App() {
           />
 
           <Route path="/application" element={<Applications />} />
-          <Route
-            path="/moderator/resource/:id"
-            element={<ModeratorByIdResource />}
-          />
         </Route>
         <Route path="/" element={<Moderator />}>
           <Route path="/create/resources" element={<CreateResources />} />
           <Route path="/moderator/resources" element={<ModeratorResources />} />
+          <Route
+            path="/moderator/resource/:id"
+            element={<ModeratorByIdResource />}
+          />
         </Route>
       </Routes>
     </>

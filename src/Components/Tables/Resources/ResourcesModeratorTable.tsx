@@ -18,9 +18,7 @@ import ResourceEditModal from "../../Modals/Moderator/ResourceEditModal";
 const ResourcesModeratorTable = () => {
   const { id }: any = useParams();
   const [open, setOpen] = useState(false);
-
   const [data, setData]: any = useState({});
-
   const getByIdResource = async (): Promise<void> => {
     try {
       const { data } = await moderator_api.getByIdRerource(+id);

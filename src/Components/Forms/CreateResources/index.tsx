@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "../../../store";
 import { EditTopisc } from "../../../store/slices/topics";
 import { moderator_api } from "../../../Api/moderator.api";
 import { toast } from "react-toastify";
+import { CreateResource } from "../../../store/slices/moderator";
 
 const CreateResourcesForm = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ const CreateResourcesForm = () => {
     try {
       const { data } = await moderator_api.createResource(formdata);
       if (data.code === 200) {
+        dispatch(CreateResource(data.data))
         toast(data.message, { type: "success" });
       }
     } catch (error) {
