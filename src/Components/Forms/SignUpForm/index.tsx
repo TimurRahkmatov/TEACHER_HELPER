@@ -106,7 +106,7 @@ const SignUpForm = () => {
         <FormLabel htmlFor="scienceSelect">Sciences</FormLabel>
         <Select  onChange={(e) => setScience(e.target.value)} value={science} labelId="Fanlar" id="scienceSelect">
           {Sciences?.map((item: ScienceType) => (
-            <MenuItem key={item?.id} value={item?.science_name}>
+            <MenuItem key={item?.id} value={item?.id}>
               {item?.science_name}
             </MenuItem>
           ))}
