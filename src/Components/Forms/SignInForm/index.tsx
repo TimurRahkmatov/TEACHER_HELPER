@@ -29,15 +29,19 @@ const SignInForm = () => {
         username: username,
         password: password,
       });
-      console.log(data);
-
       if (data?.code === 200) {
         localStorage.setItem("token", data?.data.token);
         toast(data?.message, { type: "success" });
         dispatch(registerAuth({ username: username }));
         navigate("/");
       }
-    } catch (error) {
+    } catch (error: any) {
+      if(error?.response?.data.message) {
+        toast(error?.response?.data.message , {type: "error"})
+      }
+      if (error?.response?.data?.data?.password) {
+        toast(error?.response?.data.data.password , {type: "warning"})
+      }
       console.log(error);
     }
   };
