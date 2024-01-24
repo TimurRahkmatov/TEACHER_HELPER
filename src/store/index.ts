@@ -5,13 +5,15 @@ import topicReducer from "./slices/topics";
 import classReducer from "./slices/class";
 import scienceReducer from "./slices/science";
 import moderatorReducer from "./slices/moderator";
+import teacherReducer from "./slices/teacher";
 const store = configureStore({
   reducer: {
     auth: authReducer,
     topic: topicReducer,
     class: classReducer,
     science: scienceReducer,
-    moderator: moderatorReducer
+    moderator: moderatorReducer,
+    teacher: teacherReducer
     
   },
 });

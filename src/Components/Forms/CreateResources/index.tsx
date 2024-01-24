@@ -54,8 +54,7 @@ const CreateResourcesForm = () => {
     class: string;
     quarter: string;
     science: string;
-  }
-  interface Iitem {
+  } interface Iitem {
     id: number;
     topic_name: string;
     add: IAdd;

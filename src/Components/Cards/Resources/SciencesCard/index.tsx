@@ -1,44 +1,84 @@
 import { ArrowRight } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { teacher_api } from "../../../../Api/teacher.api";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../store";
+import { EditTeacherResources } from "../../../../store/slices/teacher";
 
-const fanlar = [
-  {
-    title: "Точные науки",
-    desc: "6 предметов",
-  },
-  {
-    title: "Гуманитарные науки",
-    desc: "6 предметов",
-  },
-  {
-    title: "Естественные науки",
-    desc: "6 предметов",
-  },
-  {
-    title: "Общие",
-    desc: "6 предметов",
-  },
-];
+interface IUser {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+interface IModerator {
+  id: number;
+  level: number;
+  science: string | null;
+  user: IUser;
+}
+
+interface IAdd {
+  class: string;
+  quarter: string;
+  science: string;
+}
+interface Iitem {
+  id: number;
+  topic_name: string;
+  add: IAdd;
+}
+type ResourceType = {
+  created_at: string;
+  id: number;
+  media: [];
+  moderator: IModerator;
+  resource_name: string;
+  status: string;
+  topic: Iitem;
+};
+
 const SciencesCard = () => {
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.teacher.resources);
+  const getAllResources = async (): Promise<void> => {
+    try {
+      const { data } = await teacher_api.findAllResource();
+      if (data.code === 200) {
+        dispatch(EditTeacherResources(data.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const getAllResources = 
+  useEffect(() => {
+    getAllResources();
+  }, []);
 
   return (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: {lg: "start" , md: "start" , sm: 'center' , xs: 'center'},
+        justifyContent: {
+          lg: "start",
+          md: "start",
+          sm: "center",
+          xs: "center",
+        },
         gap: "2rem",
       }}
     >
-      {fanlar?.map((item) => (
+      {state?.map((item: ResourceType) => (
         <Link
           to="/recources/science/1"
           style={{ color: "black", textDecoration: "none" }}
         >
           <Box
+          key={item.id}
             sx={{
               width: "350px",
               minHeight: "70px",
@@ -52,10 +92,10 @@ const SciencesCard = () => {
           >
             <Box>
               <Typography sx={{ fontWeight: "600", fontSize: "19px" }}>
-                {item?.title}
+                {item?.resource_name}
               </Typography>
               <Typography sx={{ fontWeight: "600", color: "grey" }}>
-                {item?.desc}
+                {item?.moderator.user.first_name}
               </Typography>
             </Box>
             <ArrowRight />
