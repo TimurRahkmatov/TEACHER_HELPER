@@ -74,7 +74,7 @@ const SciencesCard = () => {
     >
       {state?.map((item: ResourceType) => (
         <Link
-          to="/recources/science/1"
+          to={`/resource/${item.id}`}
           style={{ color: "black", textDecoration: "none" }}
         >
           <Box
