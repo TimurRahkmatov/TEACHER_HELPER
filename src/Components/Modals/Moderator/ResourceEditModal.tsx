@@ -3,7 +3,14 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import { Button, FormControl, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { moderator_api } from "../../../Api/moderator.api";
 import { base_api } from "../../../Api/base.api";
@@ -22,11 +29,11 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
     try {
       const { data } = await moderator_api.editResource(id, {
         resource_name: resourceName,
-        topic_id: +topic
+        topic_id: +topic,
       });
       console.log(data);
-      if(data.code === 200) {
-        toast(data.message , {type: "info"})
+      if (data.code === 200) {
+        toast(data.message, { type: "info" });
       }
     } catch (error) {
       console.log(error);
@@ -82,12 +89,12 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
               Edit Resource
             </Typography>
             <FormControl sx={{ width: "100%", marginTop: "0.5rem" }}>
-              <label style={{ marginTop: "1.5rem" }} htmlFor="topic">
+              {/* <label style={{ marginTop: "1.5rem" }} htmlFor="topic">
                 Mavzu
               </label>
               <select
-                value={topic}
-                onChange={(e) => setTopic(e.target.value)}
+                
+               
                 style={{ width: "100%", padding: "0.6rem" }}
                 name=""
                 id="topic"
@@ -97,7 +104,22 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
                     {item.topic_name}
                   </option>
                 ))}
-              </select>
+              </select> */}
+              <FormLabel htmlFor="topicsSelect">Mavzu</FormLabel>
+              <Select
+                style={{height: '40px'}}
+                onChange={(e) => setTopic(e.target.value)}
+                value={topic}
+                placeholder="Mavzuni tanlang"
+                labelId="Topics"
+                id="topicsSelect"
+              >
+                {state?.map((item : any) => (
+                  <MenuItem key={item?.id} value={item?.id}>
+                    {item?.topic_name}
+                  </MenuItem>
+                ))}
+              </Select>
 
               <Typography variant="body2" sx={{ marginTop: " 2rem" }}>
                 type the name of the resource you want to change
@@ -114,7 +136,7 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
                 }}
               />
               <Button
-              onClick={() => handleEditResource()}
+                onClick={() => handleEditResource()}
                 sx={{
                   width: "100%",
                   marginTop: "1rem",
@@ -123,7 +145,7 @@ const ResourceEditModal = ({ setOpen, open, id }: any) => {
               >
                 Edit Resource
               </Button>
-            </FormControl >
+            </FormControl>
           </Box>
         </Fade>
       </Modal>

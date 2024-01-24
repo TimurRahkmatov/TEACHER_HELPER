@@ -18,7 +18,6 @@ const ResourceDelete = ({ id }: ID) => {
       const deleteConfirm = confirm("siz delete qilishni xohlaysizmi");
       if(deleteConfirm === true) {
           const { data } = await moderator_api.deleteResource(id);
-          
           if (data.code === 200) {
             dispatch(DeleteResource(id))
             toast(data.message, { type: "success" });
