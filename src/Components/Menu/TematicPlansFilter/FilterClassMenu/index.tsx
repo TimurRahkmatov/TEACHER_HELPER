@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select } from "@mui/material";
+import { Box, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect } from "react";
 import { base_api } from "../../../../Api/base.api";
 import { useAppDispatch, useAppSelector } from "../../../../store";
@@ -23,15 +23,16 @@ const ClassFilterMenu = () => {
     getAllClasses();
   }, []);
   return (
-    <Box>
-      <Select id="classSelect" placeholder="Sinfni tanlang">
+    <Box >
+      <InputLabel id="demo_class">Classes</InputLabel>
+      <Select labelId="demo_class" sx={{width: '130px'}} >
         {state?.map((item: any) => (
           <MenuItem key={item?.id} value={item?.id}>
             {item?.class_name}
           </MenuItem>
         ))}
       </Select>
-    </Box>
+    </Box >
   );
 };
 

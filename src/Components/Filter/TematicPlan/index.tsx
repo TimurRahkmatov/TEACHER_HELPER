@@ -1,4 +1,4 @@
-import { Box,  MenuItem, Select } from "@mui/material";
+import { Box, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect } from "react";
 import ClassFilterMenu from "../../Menu/TematicPlansFilter/FilterClassMenu";
 import { base_api } from "../../../Api/base.api";
@@ -34,14 +34,19 @@ const TematicPlanFilter = () => {
         flexWrap: "wrap",
       }}
     >
-      <Select id="scienceSelect" placeholder="Mavzuni tanlang">
-        {state?.map((item: any) => (
-          <MenuItem key={item?.id} value={item?.id}>
-            {item?.science_name}
-          </MenuItem>
-        ))}
-      </Select>
-      <ClassFilterMenu />
+      <Box sx={{ display: "flex" , alignItems: "center" , gap: "6rem" }}>
+        <Box>
+          <InputLabel id="demo_subjects">Subjects</InputLabel>
+          <Select labelId="demo_subjects" id="demo-simple"  sx={{minWidth: '130px'}}>
+            {state?.map((item: any) => (
+              <MenuItem key={item?.id} value={item?.id}>
+                {item?.science_name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <ClassFilterMenu />
+      </Box>
     </Box>
   );
 };
