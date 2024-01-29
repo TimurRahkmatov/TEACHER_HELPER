@@ -7,27 +7,36 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { base_api } from "../../../Api/base.api";
 import { auth_api } from "../../../Api/auth.api";
-import { InputMask } from '@react-input/mask';
+import { InputMask } from "@react-input/mask";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 
-const SignUpForm = () => {
+const SignUpForm = ({ setLoading }: any) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [Sciences, setSciences] = useState([]);
+  const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [science, setScience] = useState("");
 
-  const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
+  const PhoneNumber = `${username.slice(0, 3)}${username.slice(
+    5,
+    7
+  )}${username.slice(9, 12)}${username.slice(13, 15)}${username.slice(16, 18)}`;
 
   const handleRegister = async (e: any): Promise<void> => {
     e.preventDefault();
+    setLoading(true);
     try {
+      if (science.length == 0) {
+        setError(true);
+      } else {
+        setError(false);
+      }
       const { data } = await auth_api.register({
         username: PhoneNumber,
         science_id: +science,
@@ -39,18 +48,19 @@ const SignUpForm = () => {
     } catch (error: any) {
       if (error.response.data.code === 1111) {
         dispatch(registerAuth({ username: username }));
-
         navigate("/verification");
       }
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   type ScienceType = {
-     id: number,
-     science_name: string,
-     science_group: string
-  }
+    id: number;
+    science_name: string;
+    science_group: string;
+  };
   const getAllSciences = async () => {
     try {
       const { data } = await base_api.findAllSciences();
@@ -61,7 +71,7 @@ const SignUpForm = () => {
       console.log("get Error", error);
     }
   };
-  
+
   useEffect(() => {
     getAllSciences();
   }, []);
@@ -83,16 +93,43 @@ const SignUpForm = () => {
         >
           Only phone number
         </FormLabel>
-       <InputMask placeholder="Your phone number" id="phone" value={username}  onChange={(e) => setUsername(e.target.value)} style={{height: "54px" , marginTop: '0.6rem' , fontSize: "18px" , paddingLeft: "15px" }} mask="998 (__) ___-__-__" replacement={{ _: /\d/ }} />
-        <FormLabel sx={{marginTop: '1rem'}} htmlFor="scienceSelect">Sciences</FormLabel>
-        <Select  onChange={(e) => setScience(e.target.value)} value={science} labelId="Fanlar" id="scienceSelect">
+        <InputMask
+          placeholder="Your phone number"
+          id="phone"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{
+            height: "54px",
+            marginTop: "0.6rem",
+            fontSize: "18px",
+            paddingLeft: "15px",
+            zIndex: "2",
+            position: "relative",
+          }}
+          mask="998 (__) ___-__-__"
+          replacement={{ _: /\d/ }}
+        />
+        <FormLabel
+          error={error}
+          sx={{ marginTop: "1rem" }}
+          htmlFor="scienceSelect"
+        >
+          Sciences
+        </FormLabel>
+        <Select
+          error={error}
+          onChange={(e) => setScience(e.target.value)}
+          value={science}
+          labelId="Fanlar"
+          id="scienceSelect"
+        >
           {Sciences?.map((item: ScienceType) => (
             <MenuItem key={item?.id} value={item?.id}>
               {item?.science_name}
             </MenuItem>
           ))}
         </Select>
-        
+
         <Button
           type="submit"
           sx={{

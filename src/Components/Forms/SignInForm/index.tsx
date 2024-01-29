@@ -12,12 +12,11 @@ import {
 import { useState } from "react";
 import { auth_api } from "../../../Api/auth.api";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 import { InputMask } from "@react-input/mask";
 
-const SignInForm = () => {
+const SignInForm = ({setLoading}:any) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState("");
@@ -28,6 +27,7 @@ const SignInForm = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const { data } = await auth_api.login({
         username: PhoneNumber,
@@ -35,18 +35,13 @@ const SignInForm = () => {
       });
       if (data?.code === 200) {
         localStorage.setItem("token", data?.data.token);
-        toast(data?.message, { type: "success" });
         dispatch(registerAuth({ username: PhoneNumber }));
         navigate("/");
       }
     } catch (error: any) {
-      if (error?.response?.data.message) {
-        toast(error?.response?.data.message, { type: "error" });
-      }
-      if (error?.response?.data?.data?.password) {
-        toast(error?.response?.data.data.password, { type: "warning" });
-      }
       console.log(error);
+    } finally {
+      setLoading(false)
     }
   };
 
