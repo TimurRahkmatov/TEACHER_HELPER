@@ -26,9 +26,6 @@ const SignInForm = () => {
 
   const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
 
-  
-  
-
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
@@ -39,7 +36,7 @@ const SignInForm = () => {
       if (data?.code === 200) {
         localStorage.setItem("token", data?.data.token);
         toast(data?.message, { type: "success" });
-        dispatch(registerAuth({ username: username }));
+        dispatch(registerAuth({ username: PhoneNumber }));
         navigate("/");
       }
     } catch (error: any) {

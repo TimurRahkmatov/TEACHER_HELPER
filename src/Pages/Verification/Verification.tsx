@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Verification = () => {
   const navigate = useNavigate()
   const [confirm, setConfirm] = useState('');
-  const state = useAppSelector((state) => state.auth);
+  const state = useAppSelector((state) => state.auth);  
   
   const handleVerification = async () => {
     try {

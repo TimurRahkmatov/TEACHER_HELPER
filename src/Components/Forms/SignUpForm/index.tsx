@@ -25,7 +25,6 @@ const SignUpForm = () => {
 
   const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
 
-
   const handleRegister = async (e: any): Promise<void> => {
     e.preventDefault();
     try {
@@ -34,7 +33,7 @@ const SignUpForm = () => {
         science_id: +science,
       });
       if (data.code === 200) {
-        dispatch(registerAuth({ username: username }));
+        dispatch(registerAuth({ username: PhoneNumber }));
         navigate("/verification");
       }
     } catch (error: any) {

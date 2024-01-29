@@ -1,0 +1,5 @@
+Admin Panel 
+ =>  tacher => Userlar ro'yhati
+ =>  data => table , username , phone , viloyati , tumani , subject , blok  => , edit phone , username, soft delete , hard delete ,
+ => data table => moderator => username , phone , subject , class , blok =>  ruhsat berish , 
+ => Tematic Plan => create => fan , guruh 
