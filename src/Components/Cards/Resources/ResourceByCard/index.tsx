@@ -1,4 +1,4 @@
-import { Box, Skeleton, Typography } from "@mui/material";
+import { Box, Card, Skeleton, Typography } from "@mui/material";
 import { teacher_api } from "../../../../Api/teacher.api";
 import { Params, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -29,8 +29,43 @@ const ResourceByIdCard = () => {
   return (
     <Box sx={{ marginTop: "2rem" }}>
       {loading == true ? (
-        <Skeleton variant="rectangular" width={"100%"} height={"200px"} sx={{borderRadius:"9px"}} />
+        <Card
+          variant="outlined"
+          sx={{
+            width: "100%",
+           
+            gap: 2,
+            height: "200px",
+            padding: "2rem",
+          }}
+        >
+         
+            <Skeleton width={"290px"} height={"35px"} />
+            <Skeleton width={"250px"} height={"22px"} />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: '100%'
+              }}
+            >
+              <Box sx={{ marginTop: "3rem" }}>
+                <Skeleton width={"200px"} height={"20px"} />
+                <Skeleton width={"120px"} height={"19px"} />
+              </Box>
+              <Box sx={{ marginTop: "3rem" }}>
+                <Skeleton width={"200px"} height={"20px"} />
+                <Skeleton width={"120px"} height={"19px"} />
+              </Box>
+              <Box sx={{ marginTop: "3rem" }}>
+                <Skeleton width={"200px"} height={"20px"} />
+                <Skeleton width={"120px"} height={"19px"} />
+              </Box>
+            </Box>
+        </Card>
       ) : (
+        // <Skeleton variant="rectangular" width={"100%"} height={"200px"} sx={{borderRadius:"9px"}} />
         <Box
           sx={{
             width: "100%",

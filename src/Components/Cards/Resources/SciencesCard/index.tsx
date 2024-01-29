@@ -1,8 +1,8 @@
 import { ArrowRight } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { teacher_api } from "../../../../Api/teacher.api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store";
 import { EditTeacherResources } from "../../../../store/slices/teacher";
 
@@ -42,15 +42,19 @@ type ResourceType = {
 
 const SciencesCard = () => {
   const dispatch = useAppDispatch();
+  const [loading , setLoading] = useState(false)
   const state = useAppSelector((state) => state.teacher.resources);
   const getAllResources = async (): Promise<void> => {
     try {
+      setLoading(true)
       const { data } = await teacher_api.findAllResource();
       if (data.code === 200) {
         dispatch(EditTeacherResources(data.data));
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -72,7 +76,7 @@ const SciencesCard = () => {
         gap: "2rem",
       }}
     >
-      {state?.map((item: ResourceType) => (
+      {loading === true ? ([0,1,2].map((item) => ( <Skeleton variant="rectangular" width={"350px"} height={"80px"} sx={{borderRadius:"10px"}} />))) : (state?.map((item: ResourceType) => (
         <Link
           to={`/resource/${item.id}`}
           style={{ color: "black", textDecoration: "none" }}
@@ -101,7 +105,7 @@ const SciencesCard = () => {
             <ArrowRight />
           </Box>
         </Link>
-      ))}
+      )))}
     </Box>
   );
 };

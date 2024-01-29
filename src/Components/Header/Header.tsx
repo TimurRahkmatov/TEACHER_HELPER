@@ -8,10 +8,18 @@ import {
   Settings,
 } from "@mui/icons-material";
 import Avatarka from "../../assets/Images/avatarka.png";
-import { Box, Container, Fade, Input, Menu, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Fade,
+  Input,
+  Menu,
+  Typography,
+} from "@mui/material";
 import AvatarkaImg from "../../assets/Images/avatarka.png";
 import React from "react";
 import { Link } from "react-router-dom";
+import LogOutButton from "../Buttons/LogOut";
 
 const Header = ({ setOpenSidebar }: any) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -127,6 +135,7 @@ const Header = ({ setOpenSidebar }: any) => {
                 <KeyboardArrowDown />
               </Box>
             </Box>
+            <LogOutButton />
             <Menu
               PaperProps={{
                 sx: {

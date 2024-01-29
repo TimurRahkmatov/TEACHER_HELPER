@@ -40,4 +40,5 @@ export const auth_api = {
     "Authorization": "Bearer" +  " "  + token
   }}),
   login: (body: ILogin ) => axios.post(BASE_URL + '/auth/login' , body),
+  logOut: () => axios.post(BASE_URL + "/auth/logout")
 };
