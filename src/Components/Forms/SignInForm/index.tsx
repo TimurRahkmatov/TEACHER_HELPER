@@ -67,7 +67,7 @@ const SignInForm = ({ setLoading }: any) => {
         <InputMask
           required
           id="phone"
-          placeholder="Your phone number"
+          placeholder="998 (90) 255-23-45"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           style={{
@@ -76,7 +76,7 @@ const SignInForm = ({ setLoading }: any) => {
             fontSize: "18px",
             paddingLeft: "15px",
           }}
-          mask="998 (__) ___-__-__"
+          mask="___ (__) ___-__-__"
           replacement={{ _: /\d/ }}
         />
         <FormLabel
