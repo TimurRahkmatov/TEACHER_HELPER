@@ -95,7 +95,7 @@ const SignUpForm = ({ setLoading }: any) => {
         </FormLabel>
         <InputMask
         required
-          placeholder="Your phone number"
+          placeholder="998 (90) 255-23-45"
           id="phone"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -107,7 +107,7 @@ const SignUpForm = ({ setLoading }: any) => {
             zIndex: "2",
             position: "relative",
           }}
-          mask="998 (__) ___-__-__"
+          mask="___ (__) ___-__-__"
           replacement={{ _: /\d/ }}
         />
         <FormLabel
