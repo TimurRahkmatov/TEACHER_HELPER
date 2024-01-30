@@ -76,7 +76,7 @@ const SciencesCard = () => {
         gap: "2rem",
       }}
     >
-      {loading === true ? ([0,1,2].map((item) => ( <Skeleton variant="rectangular" width={"350px"} height={"80px"} sx={{borderRadius:"10px"}} />))) : (state?.map((item: ResourceType) => (
+      {loading === true ? ([0,1,2].map((item):any => ( <Skeleton key={item} variant="rectangular" width={"350px"} height={"80px"} sx={{borderRadius:"10px"}} />))) : (state?.map((item: ResourceType) => (
         <Link
           to={`/resource/${item.id}`}
           style={{ color: "black", textDecoration: "none" }}
