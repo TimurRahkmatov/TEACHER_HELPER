@@ -94,6 +94,7 @@ const SignUpForm = ({ setLoading }: any) => {
           Only phone number
         </FormLabel>
         <InputMask
+        required
           placeholder="Your phone number"
           id="phone"
           value={username}

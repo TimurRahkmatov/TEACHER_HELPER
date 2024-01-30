@@ -16,6 +16,7 @@ import PasswordChange from "./Pages/PasswordChange";
 import ModeratorByIdResource from "./Pages/Resources/ModeratorByIdResource";
 import Moderator from "./Layout/Moderator";
 import ResourceById from "./Pages/Resources/ResourceById";
+import TermsOfUseReg from "./Pages/TermsOfUse/TermsOfUseReg/TermsOfUseReg";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verification" element={<Verification />} />
         <Route path="/passwordchange" element={<PasswordChange />} />
+        <Route path="/termsofUse" element={<TermsOfUseReg />}/>
         <Route path="/" element={<Private />}>
           <Route path="/" element={<Calendar />} />
           <Route path="/tematicplans" element={<TematicPlans />} />

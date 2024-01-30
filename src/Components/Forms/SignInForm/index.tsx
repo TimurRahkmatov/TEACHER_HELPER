@@ -16,18 +16,20 @@ import { useAppDispatch } from "../../../store";
 import { registerAuth } from "../../../store/slices/auth";
 import { InputMask } from "@react-input/mask";
 
-const SignInForm = ({setLoading}:any) => {
+const SignInForm = ({ setLoading }: any) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassowrd] = useState("");
 
-
-  const PhoneNumber = `${username.slice(0,3)}${username.slice(5,7)}${username.slice(9,12)}${username.slice(13,15)}${username.slice(16,18)}`
+  const PhoneNumber = `${username.slice(0, 3)}${username.slice(
+    5,
+    7
+  )}${username.slice(9, 12)}${username.slice(13, 15)}${username.slice(16, 18)}`;
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     try {
       const { data } = await auth_api.login({
         username: PhoneNumber,
@@ -41,7 +43,7 @@ const SignInForm = ({setLoading}:any) => {
     } catch (error: any) {
       console.log(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -63,6 +65,7 @@ const SignInForm = ({setLoading}:any) => {
           Only phone number
         </FormLabel>
         <InputMask
+          required
           id="phone"
           placeholder="Your phone number"
           value={username}
@@ -87,6 +90,7 @@ const SignInForm = ({setLoading}:any) => {
           Password
         </FormLabel>
         <TextField
+      
           onChange={(e) => setPassowrd(e.target.value)}
           value={password}
           variant="outlined"
