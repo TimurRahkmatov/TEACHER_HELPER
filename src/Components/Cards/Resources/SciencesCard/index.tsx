@@ -51,6 +51,7 @@ const SciencesCard = () => {
       if (data.code === 200) {
         dispatch(EditTeacherResources(data.data));
       }
+      
     } catch (error) {
       console.log(error);
     } finally {

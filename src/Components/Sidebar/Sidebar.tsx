@@ -9,9 +9,10 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import LogOutButton from "../Buttons/LogOut";
 
 const Sidebar = ({ open, setOpenSidebar }: any) => {
-  const sideNavRef:any = useRef(null);
+  const sideNavRef: any = useRef(null);
   useEffect(() => {
     // Add event listener to the document object
     document.addEventListener("mousedown", handleClickOutside);
@@ -22,8 +23,8 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
     };
   }, []);
 
-  function handleClickOutside(event:Event):void {
-    if (sideNavRef.current && !sideNavRef.current?.contains(event.target) ) {
+  function handleClickOutside(event: Event): void {
+    if (sideNavRef.current && !sideNavRef.current?.contains(event.target)) {
       setOpenSidebar(false);
     }
   }
@@ -59,9 +60,9 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
           borderRadius: "8px",
           border: "1px solid #40BFC1",
           color: "#40BFC1",
-          display: {lg: "none" , md: "flex" , sm: "flex" , xs: "flex"},
+          display: { lg: "none", md: "flex", sm: "flex", xs: "flex" },
           justifyContent: "center",
-          alignItems: 'center'
+          alignItems: "center",
         }}
       >
         <Close />
@@ -80,7 +81,14 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
           src={LogoImg}
           alt="logo"
         />
-        <Typography variant="h6" sx={{ color: "#40BFC1", fontWeight: 600 , width: {lg: "100%" , md: "60%" , sm: "60%" , xs:"60%"}}}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "#40BFC1",
+            fontWeight: 600,
+            width: { lg: "100%", md: "60%", sm: "60%", xs: "60%" },
+          }}
+        >
           Teacher Helper
         </Typography>
       </Box>
@@ -88,7 +96,7 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
         sx={{
           fontSize: "17px",
           fontWeight: 600,
-          marginTop: {lg: "4rem" , md: "3rem" , sm: "2.5rem" , xs: "2rem"},
+          marginTop: { lg: "4rem", md: "3rem", sm: "2.5rem", xs: "2rem" },
           padding: "0.7rem 1.3rem",
         }}
       >
@@ -122,6 +130,16 @@ const Sidebar = ({ open, setOpenSidebar }: any) => {
             Resources
           </SidebarButtons>
         </Link>
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: "20px",
+            left: "20px",
+            display: { lg: " none", md: "none", sm: "block", xs: "block" },
+          }}
+        >
+          <LogOutButton />
+        </Box>
       </Box>
     </Box>
   );

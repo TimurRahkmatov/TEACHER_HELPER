@@ -135,7 +135,8 @@ const Header = ({ setOpenSidebar }: any) => {
                 <KeyboardArrowDown />
               </Box>
             </Box>
-            <LogOutButton />
+            <Box sx={{display: {lg: "block" , md: "block" , sm: "none" , xs: "none"}}}><LogOutButton /></Box>
+            
             <Menu
               PaperProps={{
                 sx: {

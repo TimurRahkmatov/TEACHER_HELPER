@@ -72,7 +72,7 @@ const Verification = () => {
               variant="body1"
               sx={{ color: "black", fontWeight: "600" ,  margin: "auto" }}
             >
-              ******7859
+              ***()
             </Typography>
             <Box sx={{ width: "100%", marginTop: "1rem" , margin: "auto" }}>
               <Typography variant="body1" sx={{ textAlign: "center" }}>

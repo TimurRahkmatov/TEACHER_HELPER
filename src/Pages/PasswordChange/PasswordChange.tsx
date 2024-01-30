@@ -10,8 +10,10 @@ import {
 import { useState } from "react";
 import { auth_api } from "../../Api/auth.api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const PasswordChange = () => {
+ const navigate = useNavigate()
   const [change_password, setChangePassword] = useState("");
   const token = localStorage.getItem("token");
   const handleChangePassword = async () => {
@@ -20,8 +22,9 @@ const PasswordChange = () => {
         { password: change_password },
         token + ""
       );
-      if(data.code === 200) {
-        toast(data.message , {type: "info"})
+      if (data.code === 200) {
+        toast(data.message, { type: "info" });
+        navigate('/')
       }
     } catch (error) {
       console.log(error);
