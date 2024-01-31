@@ -34,7 +34,7 @@ const TematicPlanFilter = () => {
         flexWrap: "wrap",
       }}
     >
-      <Box sx={{ display: "flex" , alignItems: "center" , gap: "6rem" }}>
+      <Box sx={{ display: "flex" , alignItems: "center" , columnGap: "3rem" , flexWrap: "wrap", rowGap: "1rem" }}>
         <Box>
           <InputLabel id="demo_subjects">Subjects</InputLabel>
           <Select labelId="demo_subjects" id="demo-simple"  sx={{minWidth: '130px'}}>
