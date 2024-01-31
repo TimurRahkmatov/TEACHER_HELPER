@@ -51,7 +51,7 @@ const SignUp = () => {
             >
               Your social campaigns
             </Typography>
-            <Link style={{textAlign: "center" , color: "blue" , textDecoration: "none"}} to='/termsofUse'><Typography variant="body1">Terms of use</Typography></Link>
+            <Link style={{textAlign: "center" , color: "#2F93F6" , textDecoration: "none"}} to='/termsofUse'><Typography variant="body1">Terms of use</Typography></Link>
             <Box
               sx={{
                 display: "flex",
